@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tu opinión nos ayuda a mejorar · Urban Fumig F.P.</title>
+  <meta name="description" content="Encuesta breve de 30 segundos sobre tu cotización con Urban Fumig F.P. en San Cristóbal.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://urbanfumig.com/encuesta/">
+  <meta property="og:title" content="Tu opinión nos ayuda a mejorar · Urban Fumig F.P.">
+  <meta property="og:description" content="Regálanos 30 segundos para mejorar nuestras próximas propuestas de control de plagas.">
+  <meta property="og:image" content="https://urbanfumig.com/assets/logo-horizontal.png">
+  <meta name="theme-color" content="#141414">
+  <link rel="icon" type="image/png" href="../assets/icono-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --naranja: #FE5100;
+      --naranja-hover: #E24700;
+      --hero-bg: #141414;
+      --oscuro: #1E1E1E;
+      --texto: #2B2B2B;
+      --suave: #616161;
+      --fondo: #F6F4F0;
+      --borde: #E4E0D8;
+      --wa: #25D366;
+      --font-display: "Anton", Impact, "Arial Narrow", sans-serif;
+      --font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .hero-bar {
+      background: var(--hero-bg);
+      color: #FFFFFF;
+      padding: 26px 18px 54px;
+      border-bottom: 4px solid var(--naranja);
+    }
+    .wrap {
+      width: min(680px, 100%);
+      margin: 0 auto;
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .logo-pill {
+      background: #FFFFFF;
+      border-radius: 999px;
+      padding: 6px 14px 6px 10px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .logo-pill img { height: 26px; width: auto; display: block; }
+    .time-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #FF8C52;
+      background: rgba(254, 81, 0, 0.14);
+      border: 1px solid rgba(254, 81, 0, 0.34);
+      padding: 6px 11px;
+      border-radius: 999px;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(1.85rem, 5vw, 2.5rem);
+      line-height: 1.06;
+      letter-spacing: 0.01em;
+      margin: 0 0 10px;
+      text-transform: uppercase;
+    }
+    h1 span { color: var(--naranja); }
+    .hero-sub {
+      margin: 0;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 58ch;
+    }
+    .card {
+      background: #FFFFFF;
+      border: 1px solid var(--borde);
+      border-radius: 20px;
+      padding: 26px 22px;
+      margin: -30px auto 34px;
+      box-shadow: 0 18px 44px rgba(20, 20, 20, 0.08);
+    }
+    .q-block {
+      padding-bottom: 22px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--borde);
+    }
+    .q-block:last-of-type { border-bottom: 0; margin-bottom: 12px; padding-bottom: 6px; }
+    .q-title {
+      display: flex;
+      align-items: baseline;
+      gap: 9px;
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: var(--oscuro);
+      margin: 0 0 5px;
+    }
+    .q-num {
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--naranja);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      flex-shrink: 0;
+    }
+    .q-help {
+      margin: 0 0 12px 33px;
+      font-size: 0.76rem;
+      color: var(--suave);
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      appearance: none;
+      border: 1.5px solid var(--borde);
+      background: #FFFFFF;
+      color: var(--oscuro);
+      font-family: inherit;
+      font-size: 0.81rem;
+      font-weight: 600;
+      padding: 10px 13px;
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+      line-height: 1.3;
+    }
+    .chip:hover { border-color: var(--oscuro); }
+    .chip.active {
+      border-color: var(--naranja);
+      background: #FFF3EC;
+      color: #C43B00;
+      font-weight: 700;
+    }
+    .scale-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .scale-btn {
+      appearance: none;
+      border: 1.5px solid var(--borde);
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 12px 6px;
+      cursor: pointer;
+      text-align: center;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+    .scale-btn strong { display: block; font-size: 1.15rem; color: var(--oscuro); }
+    .scale-btn span { display: block; font-size: 0.67rem; color: var(--suave); margin-top: 2px; font-weight: 600; }
+    .scale-btn:hover { border-color: var(--oscuro); }
+    .scale-btn.active { border-color: var(--naranja); background: var(--naranja); color: #FFFFFF; }
+    .scale-btn.active strong, .scale-btn.active span { color: #FFFFFF; }
+
+    .field, textarea.field {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--borde);
+      background: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--oscuro);
+      outline: none;
+    }
+    .field:focus { border-color: var(--naranja); }
+    textarea.field { min-height: 86px; resize: vertical; margin-top: 10px; }
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .btn-submit {
+      width: 100%;
+      margin-top: 14px;
+      padding: 15px 22px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--naranja);
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+    .btn-submit:hover { background: var(--naranja-hover); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.6; cursor: wait; transform: none; }
+    .privacy-note {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--suave);
+      margin: 10px 0 0;
+    }
+    .error-msg {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #FFF1F0;
+      border: 1px solid #FFCCC7;
+      color: #A8071A;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .done-box {
+      display: none;
+      text-align: center;
+      padding: 18px 8px 8px;
+    }
+    .done-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #FFF3EC;
+      color: var(--naranja);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+      font-size: 1.7rem;
+      font-weight: 800;
+    }
+    .done-box h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.9rem;
+      margin: 0 0 8px;
+      color: var(--oscuro);
+    }
+    .done-box p {
+      font-size: 0.88rem;
+      color: var(--suave);
+      max-width: 46ch;
+      margin: 0 auto 18px;
+    }
+    .done-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--wa);
+      color: #0B1F12;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .btn-web {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1.5px solid var(--oscuro);
+      color: var(--oscuro);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      padding: 0 18px 34px;
+      font-size: 0.74rem;
+      color: var(--suave);
+    }
+    footer strong { color: var(--oscuro); }
+    @media (max-width: 560px) {
+      .card { padding: 20px 16px; }
+      .row-2 { grid-template-columns: 1fr; }
+      .scale-btn span { font-size: 0.61rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero-bar">
+    <div class="wrap">
+      <div class="brand-row">
+        <a href="../" class="logo-pill" aria-label="Urban Fumig">
+          <img src="../assets/logo-horizontal.png" alt="Urban Fumig F.P.">
+        </a>
+        <span class="time-badge">Toma 30 segundos</span>
+      </div>
+      <h1>TU OPINIÓN NOS AYUDA A <span>MEJORAR</span></h1>
+      <p class="hero-sub" id="hero-greeting">
+        Gracias por revisar nuestra cotización. Entendemos que cada decisión tiene su momento; si nos cuentas con sinceridad qué faltó o qué pesó más esta vez, nos ayudas a ofrecerte un mejor servicio en futuras jornadas.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding: 0 14px;">
+    <section class="card">
+      <form id="survey-form" name="encuesta-cotizacion" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="encuesta-cotizacion">
+        <input type="hidden" id="h-motivo" name="motivo" value="">
+        <input type="hidden" id="h-precio" name="precio" value="">
+        <input type="hidden" id="h-mejora" name="debilidades_o_mejoras" value="">
+        <input type="hidden" id="h-probabilidad" name="probabilidad_proxima" value="">
+        <input type="hidden" id="h-proxima" name="cuando_proxima_jornada" value="">
+
+        <div class="q-block">
+          <div class="q-title"><span class="q-num">1</span> ¿Cuál fue el motivo principal por el que no avanzaron esta vez?</div>
+          <p class="q-help">Puedes marcar una o varias opciones.</p>
+          <div class="chips" data-group="motivo" data-multi="true">
+            <button type="button" class="chip" data-val="Precio / presupuesto">Precio o presupuesto actual</button>
+            <button type="button" class="chip" data-val="Otro proveedor mas economico">Elegimos una opción más económica</button>
+            <button type="button" class="chip" data-val="Proveedor ya conocido">Seguimos con un proveedor conocido</button>
+            <button type="button" class="chip" data-val="Falto detalle tecnico">Faltó información o detalle técnico</button>
+            <button type="button" class="chip" data-val="Alcance o garantia insuficiente">Alcance o garantía no fue suficiente</button>
+            <button type="button" class="chip" data-val="Forma de pago / cuotas">Necesitábamos otras facilidades de pago</button>
+            <button type="button" class="chip" data-val="Se pospuso la fecha">Se pospuso la fumigación por ahora</button>
+            <button type="button" class="chip" data-val="Demora en respuesta">Tiempo de respuesta o agenda</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <div class="q-title"><span class="q-num">2</span> ¿Cómo percibieron el precio de nuestra cotización?</div>
+          <p class="q-help">Marca la opción que mejor refleja su opinión.</p>
+          <div class="chips" data-group="precio" data-multi="false">
+            <button type="button" class="chip" data-val="Alto vs otros">Alto frente a otras cotizaciones</button>
+            <button type="button" class="chip" data-val="Acorde pero fuera de presupuesto">Acorde, pero fuera de presupuesto ahora</button>
+            <button type="button" class="chip" data-val="Justo, no fue el precio">Justo — el motivo no fue el precio</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <div class="q-title"><span class="q-num">3</span> ¿Dónde viste debilidades o qué faltó para que fuera un «sí»?</div>
+          <p class="q-help">Marca lo que consideres y, si deseas, añade un comentario libre.</p>
+          <div class="chips" data-group="mejora" data-multi="true">
+            <button type="button" class="chip" data-val="Descuento por volumen">Mejor tarifa por cantidad de casas/áreas</button>
+            <button type="button" class="chip" data-val="Pago en cuotas / Cashea">Pago en cuotas o financiamiento</button>
+            <button type="button" class="chip" data-val="Mas garantia o refuerzo">Mayor garantía o refuerzo incluido</button>
+            <button type="button" class="chip" data-val="Explicar productos/tecnica">Explicar mejor productos y seguridad</button>
+            <button type="button" class="chip" data-val="Visita previa en sitio">Inspección presencial previa</button>
+            <button type="button" class="chip" data-val="Referencias locales">Referencias de otros urbanismos/clientes</button>
+          </div>
+          <textarea id="f-comentario" name="comentario" class="field" placeholder="¿Qué cambiarías de nuestra propuesta o qué te gustaría ver en la próxima cotización? (opcional)"></textarea>
+        </div>
+
+        <div class="q-block">
+          <div class="q-title"><span class="q-num">4</span> ¿Qué tan probable es que nos consideren en su próxima fumigación?</div>
+          <p class="q-help">1 = Poco probable · 5 = Muy probable</p>
+          <div class="scale-row" data-group="probabilidad">
+            <button type="button" class="scale-btn" data-val="1/5"><strong>1</strong><span>Poco</span></button>
+            <button type="button" class="scale-btn" data-val="2/5"><strong>2</strong><span>Baja</span></button>
+            <button type="button" class="scale-btn" data-val="3/5"><strong>3</strong><span>Tal vez</span></button>
+            <button type="button" class="scale-btn" data-val="4/5"><strong>4</strong><span>Probable</span></button>
+            <button type="button" class="scale-btn" data-val="5/5"><strong>5</strong><span>Muy seguro</span></button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <div class="q-title"><span class="q-num">5</span> ¿Cuándo estiman hacer la próxima jornada?</div>
+          <p class="q-help">Así te escribimos solo en el momento útil, sin molestar antes.</p>
+          <div class="chips" data-group="proxima" data-multi="false">
+            <button type="button" class="chip" data-val="En 1-2 meses">En 1 a 2 meses</button>
+            <button type="button" class="chip" data-val="En 3-6 meses">En 3 a 6 meses</button>
+            <button type="button" class="chip" data-val="En 6-12 meses">En 6 a 12 meses</button>
+            <button type="button" class="chip" data-val="Nosotros avisamos">Nosotros les avisamos</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <div class="q-title"><span class="q-num">6</span> Datos opcionales (puedes dejarlo anónimo si prefieres)</div>
+          <p class="q-help">Si nos dejas el nombre del urbanismo o negocio, guardamos tu sugerencia para la próxima propuesta.</p>
+          <div class="row-2">
+            <input id="f-urb" name="urbanismo" class="field" type="text" placeholder="Urbanismo, condominio o negocio">
+            <input id="f-contacto" name="contacto" class="field" type="text" placeholder="Tu nombre o cargo (opcional)">
+          </div>
+        </div>
+
+        <div id="err-box" class="error-msg">Por favor selecciona al menos una opción en la pregunta 1 antes de enviar.</div>
+
+        <button type="submit" id="btn-send" class="btn-submit">Enviar opinión de forma confidencial</button>
+        <p class="privacy-note">Tus respuestas llegan directo a la gerencia de Urban Fumig F.P. para mejorar nuestro servicio.</p>
+      </form>
+
+      <div id="done-box" class="done-box">
+        <div class="done-icon">✓</div>
+        <h2>¡MUCHAS GRACIAS POR TU SINCERIDAD!</h2>
+        <p>
+          Recibimos tus comentarios. Para nosotros cada recomendación cuenta muchísimo y la tomaremos en cuenta para presentarles una propuesta aún más sólida en su próxima jornada.
+        </p>
+        <div class="done-actions">
+          <a href="https://wa.me/584247198219?text=Hola%20Urban%20Fumig%2C%20acabo%20de%20responder%20la%20encuesta%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20una%20pr%C3%B3xima%20propuesta." target="_blank" rel="noopener" class="btn-wa">Conversar por WhatsApp (opcional)</a>
+          <a href="../" class="btn-web">Volver a urbanfumig.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>URBAN FUMIG F.P.</strong> · San Cristóbal, Táchira · INSAI RRE-20240707120708E · RACDA 01-13-22-01-02-2024-195
+  </footer>
+
+  <script>
+    'use strict';
+
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxIN-hudPk_xt8d1xNIvRSZyaA_G45EiPJvL3pQ1IzR7Fwz-DJlHyKX27CJx5Wu8U_r/exec';
+
+    const ans = {
+      motivo: [],
+      precio: '',
+      mejora: [],
+      probabilidad: '',
+      proxima: ''
+    };
+
+    // Prellenar nombre de urbanismo/cliente si viene por ?u=Nombre
+    const params = new URLSearchParams(window.location.search);
+    const uParam = (params.get('u') || params.get('cliente') || '').trim();
+    if (uParam) {
+      document.getElementById('f-urb').value = uParam;
+      document.getElementById('hero-greeting').innerHTML =
+        `Gracias al equipo de <strong>${uParam.replace(/[<>&]/g, '')}</strong> por revisar nuestra cotización. Si nos regalas 30 segundos para contarnos qué faltó o qué pesó más esta vez, nos ayudas a ofrecerles una mejor propuesta en futuras jornadas.`;
+    }
+
+    document.querySelectorAll('.chips').forEach((groupEl) => {
+      const key = groupEl.dataset.group;
+      const multi = groupEl.dataset.multi === 'true';
+      groupEl.querySelectorAll('.chip').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const val = btn.dataset.val;
+          if (multi) {
+            btn.classList.toggle('active');
+            if (btn.classList.contains('active')) {
+              if (!ans[key].includes(val)) ans[key].push(val);
+            } else {
+              ans[key] = ans[key].filter((x) => x !== val);
+            }
+          } else {
+            groupEl.querySelectorAll('.chip').forEach((b) => b.classList.remove('active'));
+            btn.classList.add('active');
+            ans[key] = val;
+          }
+          document.getElementById('err-box').style.display = 'none';
+        });
+      });
+    });
+
+    document.querySelectorAll('.scale-row .scale-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.scale-row .scale-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        ans.probabilidad = btn.dataset.val;
+      });
+    });
+
+    document.getElementById('survey-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!ans.motivo.length && !document.getElementById('f-comentario').value.trim()) {
+        document.getElementById('err-box').style.display = 'block';
+        return;
+      }
+
+      const btn = document.getElementById('btn-send');
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      const urb = document.getElementById('f-urb').value.trim() || 'Anónimo (Encuesta)';
+      const contacto = document.getElementById('f-contacto').value.trim();
+      const comentario = document.getElementById('f-comentario').value.trim();
+
+      const empresaLabel = contacto ? `ENCUESTA: ${urb} (${contacto})` : `ENCUESTA: ${urb}`;
+      const direccionLabel = `Motivo: ${ans.motivo.join(', ') || 'Comentario libre'}`;
+      const partes = [];
+      if (ans.precio) partes.push(`Precio: ${ans.precio}`);
+      if (ans.mejora.length) partes.push(`Faltó: ${ans.mejora.join(', ')}`);
+      if (ans.probabilidad) partes.push(`Próx. prob: ${ans.probabilidad}`);
+      if (ans.proxima) partes.push(`Cuándo: ${ans.proxima}`);
+      if (comentario) partes.push(`Nota: ${comentario}`);
+      const notaFinal = partes.join(' | ').slice(0, 1800) || 'Sin comentario adicional';
+
+      // Enviar directo al backend de Urban Fumig (Google Sheet + Panel Admin + Correo)
+      try {
+        await fetch(API_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          keepalive: true,
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            accion: 'api',
+            fn: 'crearSolicitudPublica',
+            args: [{
+              servicio: 'Encuesta Post-Cotización',
+              urgencia: 'PRESUPUESTO / FEEDBACK',
+              empresa: empresaLabel.slice(0, 138),
+              direccion: direccionLabel.slice(0, 138),
+              nota: notaFinal
+            }]
+          })
+        });
+      } catch (_) {}
+
+      document.getElementById('survey-form').style.display = 'none';
+      document.getElementById('done-box').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

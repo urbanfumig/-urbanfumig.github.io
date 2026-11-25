@@ -1,0 +1,29 @@
+{
+  "name": "Urban Fumig OS · Control Inteligente",
+  "short_name": "Urban Fumig",
+  "description": "Plataforma automatizada de control de plagas, respuesta inmediata y monitoreo 24/7 para toda Venezuela.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0C0C0E",
+  "theme_color": "#0C0C0E",
+  "icons": [
+    {
+      "src": "assets/icono-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

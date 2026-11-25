@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Urban Fumig · Acceso Plataforma</title>
+  <meta name="theme-color" content="#141414">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Urban Fumig">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icono-192.png">
+  <link rel="apple-touch-icon" href="icono-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>window.UF_API_URL = "https://script.google.com/macros/s/AKfycbxIN-hudPk_xt8d1xNIvRSZyaA_G45EiPJvL3pQ1IzR7Fwz-DJlHyKX27CJx5Wu8U_r/exec";</script>
+  <style>
+    :root {
+      --naranja: #FE5100;
+      --naranja-hover: #E24700;
+      --hero-bg: #141414;
+      --oscuro: #1C1C1C;
+      --texto: #2B2B2B;
+      --suave: #616161;
+      --fondo: #F6F4F0;
+      --tarjeta: #FFFFFF;
+      --borde: #E5E2DC;
+      --radio: 18px;
+      --font-display: "Anton", Impact, "Arial Narrow", sans-serif;
+      --font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100svh;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* =====================================================================
+       LOGIN LIMPIO Y MODERNO
+       ===================================================================== */
+    .login-shell {
+      min-height: 100svh;
+      background: var(--hero-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+    .login-back {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+    .login-back:hover { color: #FFFFFF; }
+    .login-card {
+      width: min(420px, 100%);
+      background: #FFFFFF;
+      border-radius: 22px;
+      padding: 32px 28px 28px;
+      border-top: 6px solid var(--naranja);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+    }
+    .login-logo {
+      height: 46px;
+      width: auto;
+      margin: 0 auto 18px;
+    }
+    .login-card h1 {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0 0 6px;
+      color: var(--oscuro);
+      letter-spacing: 0.01em;
+    }
+    .login-sub {
+      text-align: center;
+      font-size: 0.84rem;
+      color: var(--suave);
+      margin: 0 0 22px;
+    }
+    .field-group { margin-bottom: 14px; }
+    .label {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--suave);
+      margin-bottom: 6px;
+    }
+    .field {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--borde);
+      background: var(--fondo);
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--oscuro);
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .field:focus { border-color: var(--naranja); background: #FFFFFF; }
+    .pass-wrap { display: flex; gap: 8px; }
+    .pass-wrap .field { flex: 1; min-width: 0; }
+    .pass-toggle {
+      padding: 0 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--borde);
+      background: #FFFFFF;
+      color: var(--oscuro);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .login-err {
+      min-height: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #C23800;
+      margin: 6px 0 10px;
+      text-align: center;
+    }
+    .login-ok {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #137333;
+      background: #E6F4EA;
+      border-radius: 9px;
+      padding: 9px 12px;
+      margin: 0 0 12px;
+      text-align: center;
+    }
+    .auth-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--borde);
+      font-size: 0.79rem;
+    }
+    .link-btn {
+      background: none;
+      border: 0;
+      padding: 0;
+      color: var(--suave);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .link-btn.accent { color: var(--naranja); }
+    .link-btn:hover { color: var(--oscuro); }
+
+    .notify-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .channel-pill {
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--fondo);
+      border: 1px solid var(--borde);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .channel-pill code {
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--oscuro);
+      margin-top: 2px;
+      word-break: break-all;
+    }
+
+    /* =====================================================================
+       CABECERA DE LA APP AUTENTICADA
+       ===================================================================== */
+    .app-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--borde);
+      backdrop-filter: blur(14px);
+    }
+    .app-topbar-inner {
+      width: min(1140px, 100%);
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-row img { height: 32px; width: auto; }
+    .role-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 5px 11px;
+      border-radius: 6px;
+      background: var(--hero-bg);
+      color: #FFFFFF;
+    }
+    .role-tag.naranja { background: var(--naranja); }
+    .top-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    /* BOTONES Y CHIPS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: 0;
+      font-size: 0.84rem;
+      font-weight: 700;
+      transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+    .btn:disabled { opacity: 0.55; cursor: wait; transform: none; }
+    .btn-primary { background: var(--naranja); color: #FFFFFF; }
+    .btn-primary:hover:not(:disabled) { background: var(--naranja-hover); transform: translateY(-1px); }
+    .btn-dark { background: var(--oscuro); color: #FFFFFF; }
+    .btn-dark:hover:not(:disabled) { background: #000000; }
+    .btn-outline { background: #FFFFFF; color: var(--oscuro); border: 1.5px solid var(--borde); }
+    .btn-outline:hover:not(:disabled) { border-color: var(--oscuro); }
+    .btn-danger { background: #FFF2ED; color: #B83500; border: 1px solid #F7C7B5; }
+    .btn-danger:hover:not(:disabled) { background: #FFE3D8; }
+    .btn-sm { padding: 8px 14px; font-size: 0.76rem; }
+    .btn-block { width: 100%; }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      white-space: nowrap;
+    }
+    .chip.naranja { background: var(--naranja); color: #FFFFFF; }
+    .chip.oscuro { background: var(--oscuro); color: #FFFFFF; }
+    .chip.claro { background: var(--fondo); color: var(--oscuro); border: 1px solid var(--borde); }
+
+    /* =====================================================================
+       CONTENEDOR Y TARJETAS
+       ===================================================================== */
+    .main-wrap {
+      width: min(1140px, 100%);
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+    }
+    .hero-banner {
+      background: var(--hero-bg);
+      color: #FFFFFF;
+      border-radius: var(--radio);
+      padding: 24px 26px;
+      border-bottom: 4px solid var(--naranja);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .hero-banner h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+      text-transform: uppercase;
+      margin: 2px 0 4px;
+      line-height: 1.02;
+    }
+    .hero-banner p { margin: 0; font-size: 0.86rem; color: rgba(255, 255, 255, 0.74); }
+    .banner-kicker {
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--naranja);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .card {
+      background: #FFFFFF;
+      border: 1px solid var(--borde);
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(20, 20, 20, 0.04);
+    }
+    .card.alerta { border-top: 4px solid var(--naranja); }
+    .card-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 20px;
+      background: var(--oscuro);
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .card-bar.naranja { background: var(--naranja); }
+    .card-body { padding: 20px; }
+
+    /* SERVICIOS SELECTOR */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .svc-btn {
+      text-align: left;
+      padding: 10px 11px;
+      border-radius: 10px;
+      border: 1.5px solid var(--borde);
+      background: #FFFFFF;
+      transition: all 0.16s ease;
+    }
+    .svc-btn:hover { border-color: var(--oscuro); }
+    .svc-btn.selected { border-color: var(--naranja); background: #FFF6F1; }
+    .svc-btn strong { display: block; font-size: 0.78rem; color: var(--oscuro); }
+    .svc-btn span { display: block; font-size: 0.69rem; color: var(--suave); line-height: 1.28; margin-top: 2px; }
+
+    .prio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .prio-btn {
+      text-align: left;
+      padding: 11px 13px;
+      border-radius: 10px;
+      border: 1.5px solid var(--borde);
+      background: #FFFFFF;
+    }
+    .prio-btn.selected { border-color: var(--naranja); background: #FFF6F1; }
+    .prio-btn strong { display: block; font-size: 0.82rem; color: var(--oscuro); }
+    .prio-btn small { display: block; font-size: 0.71rem; color: var(--suave); }
+
+    /* ÓRDENES Y SEGUIMIENTO */
+    .orders-stack { display: grid; gap: 14px; }
+    .order-item {
+      padding: 16px;
+      border-radius: 14px;
+      background: var(--fondo);
+      border: 1px solid var(--borde);
+    }
+    .order-item.hot { background: #FFF7F2; border-color: var(--naranja); }
+    .order-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .order-top h3 { margin: 0; font-size: 0.96rem; color: var(--oscuro); }
+    .order-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      font-size: 0.76rem;
+      color: var(--suave);
+      margin-bottom: 10px;
+    }
+    .progress-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin: 12px 0;
+    }
+    .p-step {
+      padding: 7px 6px;
+      border-radius: 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--borde);
+      text-align: center;
+      font-size: 0.69rem;
+      font-weight: 700;
+      color: var(--suave);
+    }
+    .p-step.done { background: var(--oscuro); border-color: var(--oscuro); color: #FFFFFF; }
+    .p-step.now { background: var(--naranja); border-color: var(--naranja); color: #FFFFFF; }
+
+    /* APLICADOR CHECKLIST */
+    .tech-list { display: grid; gap: 7px; margin: 10px 0 12px; }
+    .tech-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 12px;
+      border-radius: 9px;
+      background: #FFFFFF;
+      border: 1px solid var(--borde);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .tech-item input { width: 17px; height: 17px; accent-color: var(--naranja); }
+
+    /* ADMIN KPIS Y FILTROS */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .kpi {
+      background: #FFFFFF;
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 16px 18px;
+    }
+    .kpi.hot { background: var(--hero-bg); color: #FFFFFF; border-color: var(--hero-bg); }
+    .kpi-lbl { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--suave); }
+    .kpi.hot .kpi-lbl { color: rgba(255, 255, 255, 0.72); }
+    .kpi-val { font-family: var(--font-display); font-size: 2.2rem; line-height: 1.05; margin: 4px 0 2px; color: var(--oscuro); }
+    .kpi.hot .kpi-val { color: var(--naranja); }
+    .kpi-note { font-size: 0.74rem; color: var(--suave); }
+    .kpi.hot .kpi-note { color: rgba(255, 255, 255, 0.68); }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filter-pill {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--borde);
+      background: #FFFFFF;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--oscuro);
+    }
+    .filter-pill.active { background: var(--naranja); border-color: var(--naranja); color: #FFFFFF; }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 140;
+      background: #1B1B1B;
+      color: #FFFFFF;
+      border-left: 4px solid var(--naranja);
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      display: none;
+    }
+    .toast.show { display: block; }
+
+    /* MODAL CERTIFICADO INSAI OFICIAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      background: rgba(14, 14, 14, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .cert-sheet {
+      background: #FFFFFF;
+      color: var(--oscuro);
+      width: min(740px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      border-radius: 16px;
+      padding: 24px;
+      border-top: 6px solid var(--naranja);
+    }
+    .cert-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--oscuro);
+      margin-bottom: 14px;
+    }
+    .cert-head img { height: 46px; width: auto; }
+    .cert-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-bottom: 14px; }
+    .cert-table td, .cert-table th { padding: 7px 10px; border-bottom: 1px solid var(--borde); text-align: left; }
+    .cert-table th { background: var(--oscuro); color: #FFFFFF; font-size: 0.74rem; }
+    .cert-table tr.hl td { background: #FFF7F2; }
+    .cert-sign { text-align: center; margin: 16px 0 12px; font-size: 0.78rem; }
+    .cert-sign .line { width: 210px; height: 1.5px; background: var(--oscuro); margin: 10px auto 5px; }
+    .cert-footer { font-size: 0.72rem; color: var(--suave); text-align: center; padding: 10px; border-radius: 9px; background: var(--fondo); margin-bottom: 14px; }
+
+    /* MODAL / HOJA PDF DE ENCUESTA POST-COTIZACIÓN */
+    .survey-sheet {
+      background: #FFFFFF;
+      color: var(--oscuro);
+      width: min(760px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      border-radius: 18px;
+      padding: 0;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+    }
+    .survey-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 14px 20px;
+      background: var(--fondo);
+      border-bottom: 1px solid var(--borde);
+      border-radius: 18px 18px 0 0;
+    }
+    .survey-pdf-doc {
+      background: #FFFFFF;
+      color: var(--oscuro);
+    }
+    .spdf-hero {
+      background: #141414;
+      color: #FFFFFF;
+      padding: 24px 28px 22px;
+      border-bottom: 5px solid var(--naranja);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .spdf-logo-pill {
+      background: #FFFFFF;
+      border-radius: 999px;
+      padding: 7px 16px 7px 12px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .spdf-logo-pill img { height: 28px; width: auto; display: block; }
+    .spdf-meta { text-align: right; font-size: 0.76rem; color: rgba(255, 255, 255, 0.78); }
+    .spdf-meta strong { display: block; color: var(--naranja); font-size: 0.86rem; letter-spacing: 0.04em; }
+    .spdf-title-bar {
+      background: #FFF6F1;
+      border-bottom: 1px solid #F7D8C8;
+      padding: 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .spdf-title-bar small {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--naranja);
+    }
+    .spdf-title-bar h2 {
+      margin: 2px 0 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.65rem;
+      color: var(--oscuro);
+      letter-spacing: 0.01em;
+    }
+    .spdf-score {
+      background: #141414;
+      color: #FFFFFF;
+      border-radius: 14px;
+      padding: 10px 16px;
+      text-align: center;
+      min-width: 118px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .spdf-score strong { display: block; font-family: var(--font-display); font-size: 1.55rem; color: var(--naranja); line-height: 1.05; }
+    .spdf-score span { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255, 255, 255, 0.8); font-weight: 700; }
+    .spdf-body {
+      padding: 22px 28px 24px;
+      display: grid;
+      gap: 14px;
+    }
+    .spdf-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .spdf-card {
+      background: #FAF8F5;
+      border: 1px solid var(--borde);
+      border-left: 4px solid var(--naranja);
+      border-radius: 12px;
+      padding: 14px 16px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .spdf-card.dark-border { border-left-color: #141414; }
+    .spdf-q {
+      font-size: 0.71rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--suave);
+      margin: 0 0 6px;
+    }
+    .spdf-a {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--oscuro);
+      line-height: 1.48;
+      white-space: pre-wrap;
+    }
+    .spdf-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+    .spdf-tag {
+      background: #FFF0E8;
+      color: #B83800;
+      border: 1px solid #F7C7AE;
+      border-radius: 999px;
+      padding: 4px 11px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .spdf-foot {
+      border-top: 1px solid var(--borde);
+      background: #F6F4F0;
+      padding: 14px 28px;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--suave);
+      border-radius: 0 0 18px 18px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .spdf-foot strong { color: var(--oscuro); }
+    .spdf-foot .perm { color: var(--naranja); font-weight: 700; margin-top: 2px; }
+
+    .hidden { display: none !important; }
+
+    @media print {
+      @page { size: letter portrait; margin: 10mm; }
+      body { background: #FFFFFF !important; }
+      body.printing-survey #login-screen,
+      body.printing-survey #app-screen,
+      body.printing-survey #toast,
+      body.printing-survey #cert-modal,
+      body.printing-survey .survey-toolbar { display: none !important; }
+      body.printing-survey #survey-modal {
+        display: block !important;
+        position: static !important;
+        inset: auto !important;
+        background: #FFFFFF !important;
+        padding: 0 !important;
+        backdrop-filter: none !important;
+      }
+      body.printing-survey .survey-sheet {
+        width: 100% !important;
+        max-height: none !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+      }
+      body.printing-survey .spdf-foot { border-radius: 0 !important; }
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .progress-row { grid-template-columns: repeat(2, 1fr); }
+      .spdf-grid-2 { grid-template-columns: 1fr; }
+      .spdf-hero, .spdf-title-bar, .spdf-body, .spdf-foot { padding-left: 16px; padding-right: 16px; }
+      .spdf-meta { text-align: left; }
+      .hero-banner { padding: 20px 18px; }
+      .card-body { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PANTALLA DE LOGIN / CREAR CUENTA / RECUPERAR CONTRASEÑA -->
+  <div class="login-shell" id="login-view">
+    <a href="../" class="login-back">&larr; Volver a urbanfumig.com</a>
+    <div class="login-card">
+      <img class="login-logo" src="../assets/logo-horizontal.png" alt="Urban Fumig" onerror="this.src='icono-192.png'">
+
+      <!-- MODO 1: INICIAR SESIÓN -->
+      <div id="auth-mode-login">
+        <h1>Iniciar sesión</h1>
+        <p class="login-sub">Entra con tu correo electrónico de Urban Fumig</p>
+        <div class="login-ok hidden" id="login-ok-msg"></div>
+
+        <form id="login-form">
+          <div class="field-group">
+            <label class="label" for="inp-user">Correo electrónico</label>
+            <input id="inp-user" class="field" type="email" autocomplete="email" autocapitalize="none" required placeholder="tu@correo.com">
+          </div>
+          <div class="field-group">
+            <label class="label" for="inp-pass">Contraseña</label>
+            <div class="pass-wrap">
+              <input id="inp-pass" class="field" type="password" autocomplete="current-password" required placeholder="••••">
+              <button type="button" class="pass-toggle" id="btn-toggle-pass">Ver</button>
+            </div>
+          </div>
+          <div class="login-err" id="login-err"></div>
+          <button type="submit" class="btn btn-primary btn-block" id="btn-login">Entrar a la plataforma</button>
+        </form>
+
+        <div class="auth-links">
+          <button type="button" class="link-btn" id="go-forgot">¿Olvidaste tu contraseña?</button>
+          <button type="button" class="link-btn accent" id="go-register">Crear cuenta</button>
+        </div>
+      </div>
+
+      <!-- MODO 2: CREAR CUENTA -->
+      <div id="auth-mode-register" class="hidden">
+        <h1>Crear cuenta</h1>
+        <p class="login-sub">Regístrate con tu correo para solicitar servicios y ver tus certificados</p>
+
+        <form id="register-form">
+          <div class="field-group">
+            <label class="label" for="reg-nombre">Nombre completo o empresa</label>
+            <input id="reg-nombre" class="field" type="text" required placeholder="Ej: María Pérez / Panadería Centro">
+          </div>
+          <div class="field-group">
+            <label class="label" for="reg-correo">Correo electrónico</label>
+            <input id="reg-correo" class="field" type="email" autocomplete="email" autocapitalize="none" required placeholder="tu@correo.com">
+          </div>
+          <div class="field-group">
+            <label class="label" for="reg-tel">Teléfono / WhatsApp</label>
+            <input id="reg-tel" class="field" type="tel" required placeholder="Ej: 0424-1234567">
+          </div>
+          <div class="field-group">
+            <label class="label" for="reg-pass">Contraseña (mínimo 4 caracteres)</label>
+            <input id="reg-pass" class="field" type="password" minlength="4" required placeholder="Crea tu contraseña">
+          </div>
+          <div class="login-err" id="reg-err"></div>
+          <button type="submit" class="btn btn-primary btn-block" id="btn-register">Crear mi cuenta</button>
+        </form>
+
+        <div class="auth-links" style="justify-content:center;">
+          <button type="button" class="link-btn" id="back-from-reg">&larr; Ya tengo cuenta, iniciar sesión</button>
+        </div>
+      </div>
+
+      <!-- MODO 3: RECUPERAR CONTRASEÑA -->
+      <div id="auth-mode-forgot" class="hidden">
+        <h1>Recuperar clave</h1>
+        <p class="login-sub" id="forgot-sub">Te enviaremos un código de 6 dígitos a tu correo electrónico</p>
+
+        <!-- Paso 1: pedir código -->
+        <form id="forgot-step1">
+          <div class="field-group">
+            <label class="label" for="rec-ident">Correo electrónico</label>
+            <input id="rec-ident" class="field" type="email" autocomplete="email" autocapitalize="none" required placeholder="tu@correo.com">
+          </div>
+          <div class="login-err" id="rec-err1"></div>
+          <button type="submit" class="btn btn-primary btn-block" id="btn-rec-send">Enviar código a mi correo</button>
+        </form>
+
+        <!-- Paso 2: confirmar código + nueva contraseña -->
+        <form id="forgot-step2" class="hidden">
+          <div class="login-ok" id="rec-sent-info"></div>
+          <div class="field-group">
+            <label class="label" for="rec-code">Código de 6 dígitos</label>
+            <input id="rec-code" class="field" type="text" inputmode="numeric" maxlength="6" required placeholder="000000">
+          </div>
+          <div class="field-group">
+            <label class="label" for="rec-newpass">Nueva contraseña</label>
+            <input id="rec-newpass" class="field" type="password" minlength="4" required placeholder="Escribe tu nueva contraseña">
+          </div>
+          <div class="login-err" id="rec-err2"></div>
+          <button type="submit" class="btn btn-primary btn-block" id="btn-rec-confirm">Guardar nueva contraseña</button>
+        </form>
+
+        <div class="auth-links" style="justify-content:center;">
+          <button type="button" class="link-btn" id="back-from-forgot">&larr; Volver a iniciar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APLICACIÓN AUTENTICADA -->
+  <div id="app-shell" class="hidden">
+    <header class="app-topbar">
+      <div class="app-topbar-inner">
+        <div class="brand-row">
+          <img src="../assets/logo-horizontal.png" alt="Urban Fumig" onerror="this.src='icono-192.png'">
+          <span class="role-tag naranja" id="top-role-tag">Cargando...</span>
+        </div>
+        <div class="top-actions">
+          <button type="button" class="btn btn-outline btn-sm" id="btn-notify">Activar alertas</button>
+          <button type="button" class="btn btn-outline btn-sm" id="btn-refresh">Actualizar</button>
+          <a href="../" class="btn btn-outline btn-sm">Inicio web</a>
+          <button type="button" class="btn btn-dark btn-sm" id="btn-logout">Cambiar usuario</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-wrap" id="app-content"></main>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- MODAL CERTIFICADO REAL DE CANVA (URBAN FUMIG F.P.) -->
+  <div class="modal-backdrop" id="cert-modal" role="dialog" aria-modal="true">
+    <div class="cert-sheet" style="width:min(900px, 100%); padding:18px 20px 20px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
+        <div>
+          <div style="font-size:0.72rem; font-weight:800; color:#FE5100; text-transform:uppercase;">Certificado oficial entregado a clientes</div>
+          <h3 id="cert-title" style="margin:2px 0 0; font-size:1.05rem; color:var(--oscuro);">Certificado oficial Urban Fumig F.P.</h3>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <a href="../assets/certificado-real.jpg" download="Certificado-Urban-Fumig.jpg" class="btn btn-outline btn-sm">Descargar imagen</a>
+          <button type="button" class="btn btn-primary btn-sm" id="btn-close-cert">Cerrar</button>
+        </div>
+      </div>
+
+      <div style="border-radius:12px; overflow:hidden; border:1px solid var(--borde); background:#F6F4F0;">
+        <img src="../assets/certificado-real.jpg" alt="Certificado oficial Urban Fumig F.P." style="width:100%; height:auto; display:block;">
+      </div>
+
+      <div id="cert-extra" style="margin-top:12px; padding:12px 14px; border-radius:10px; background:var(--fondo); font-size:0.8rem; color:var(--texto);"></div>
+    </div>
+  </div>
+
+  <!-- MODAL FICHA IMPRIMIBLE / PDF DE ENCUESTA POST-COTIZACIÓN -->
+  <div class="modal-backdrop" id="survey-modal" role="dialog" aria-modal="true">
+    <div class="survey-sheet">
+      <div class="survey-toolbar">
+        <strong style="font-size:0.86rem; color:var(--oscuro);">Vista previa lista para imprimir o guardar como PDF</strong>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn btn-primary btn-sm" id="btn-print-survey">Imprimir / Guardar PDF</button>
+          <button type="button" class="btn btn-outline btn-sm" id="btn-close-survey">Cerrar</button>
+        </div>
+      </div>
+      <div id="survey-pdf-body" class="survey-pdf-doc"></div>
+    </div>
+  </div>
+
+  <script>
+    'use strict';
+
+    const API_URL = window.UF_API_URL;
+    const KEY_SESION = 'uf_sesion';
+
+    const SERVICIOS = [
+      { id: 'urbanismos', nombre: 'Control Residencial y Urbanismos', desc: 'Casas completas, cloacas y áreas comunes' },
+      { id: 'cucarachas', nombre: 'Control de Cucarachas', desc: 'Vapor, gel, polvo y residual' },
+      { id: 'roedores', nombre: 'Control de Roedores', desc: 'Estaciones seguras y seguimiento' },
+      { id: 'termitas', nombre: 'Termitas y Comején', desc: 'Inyección y barrera protectora' },
+      { id: 'mosquitos', nombre: 'Mosquitos y Zancudos', desc: 'Termonebulización y focos' },
+      { id: 'chinches', nombre: 'Chinches de Cama', desc: 'Tratamiento térmico profundo' },
+      { id: 'desinfeccion', nombre: 'Desinfección y Vehículos', desc: 'Hogares, locales y carros (Cashea)' },
+      { id: 'tanques', nombre: 'Lavado de Tanques de Agua', desc: 'Lavado, desinfección, cloro y pH' },
+      { id: 'areas', nombre: 'Áreas Verdes y Maleza', desc: 'Desmalezado y herbicida selectivo' }
+    ];
+
+    const app = {
+      token: localStorage.getItem(KEY_SESION) || '',
+      usuario: '',
+      rol: '',
+      nombre: '',
+      perfil: null,
+      canales: null,
+      scriptEditorUrl: '',
+      recUsuario: '',
+      solicitudes: [],
+      selectedSvc: SERVICIOS[0].nombre,
+      selectedPrio: 'URGENCIA',
+      adminFilter: 'TODAS',
+      showAdminNew: false,
+      lastPendingCount: null,
+      pollTimer: null
+    };
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    }
+
+    function toast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(el._t);
+      el._t = setTimeout(() => el.classList.remove('show'), 4200);
+    }
+
+    function playPing() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const now = ctx.currentTime;
+        [660, 880].forEach((f, i) => {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.frequency.setValueAtTime(f, now + i * 0.12);
+          g.gain.setValueAtTime(0.001, now + i * 0.12);
+          g.gain.exponentialRampToValueAtTime(0.08, now + i * 0.12 + 0.02);
+          g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.22);
+          o.connect(g); g.connect(ctx.destination);
+          o.start(now + i * 0.12); o.stop(now + i * 0.12 + 0.24);
+        });
+      } catch (_) {}
+    }
+
+    async function api(fn, args) {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ accion: 'api', fn, args: args || [] }),
+        redirect: 'follow'
+      });
+      return res.json();
+    }
+
+    function setAuthMode(mode) {
+      document.getElementById('auth-mode-login').classList.toggle('hidden', mode !== 'login');
+      document.getElementById('auth-mode-register').classList.toggle('hidden', mode !== 'register');
+      document.getElementById('auth-mode-forgot').classList.toggle('hidden', mode !== 'forgot');
+      ['login-err', 'reg-err', 'rec-err1', 'rec-err2'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '';
+      });
+      if (mode === 'forgot') {
+        document.getElementById('forgot-step1').classList.remove('hidden');
+        document.getElementById('forgot-step2').classList.add('hidden');
+      }
+    }
+
+    function showLogin(msg = '', okMsg = '') {
+      clearInterval(app.pollTimer);
+      document.getElementById('login-view').classList.remove('hidden');
+      document.getElementById('app-shell').classList.add('hidden');
+      setAuthMode('login');
+      document.getElementById('login-err').textContent = msg;
+      const okBox = document.getElementById('login-ok-msg');
+      okBox.textContent = okMsg;
+      okBox.classList.toggle('hidden', !okMsg);
+      document.getElementById('inp-user').value = '';
+      document.getElementById('inp-pass').value = '';
+      setTimeout(() => document.getElementById('inp-user').focus(), 50);
+    }
+
+    async function cargarApp(silencioso = false) {
+      if (!app.token) return showLogin();
+      try {
+        const r = await api('obtenerApp', [app.token]);
+        if (!r || !r.ok) {
+          localStorage.removeItem(KEY_SESION);
+          app.token = '';
+          return showLogin('Tu sesión expiró. Ingresa nuevamente.');
+        }
+        const prevPend = app.lastPendingCount;
+        app.usuario = r.usuario;
+        app.rol = r.rol;
+        app.nombre = r.nombre;
+        app.perfil = r.perfil || null;
+        app.canales = r.canales || null;
+        app.scriptEditorUrl = r.scriptEditorUrl || '';
+        app.solicitudes = r.solicitudes || [];
+
+        const pendNow = app.solicitudes.filter((x) => x.estado === 'PENDIENTE').length;
+        if (silencioso && prevPend !== null && pendNow > prevPend && (app.rol === 'aplicador' || app.rol === 'admin')) {
+          playPing();
+          toast('¡Nueva solicitud recibida en vivo!');
+          if ('Notification' in window && Notification.permission === 'granted') {
+            const nueva = app.solicitudes.find((x) => x.estado === 'PENDIENTE');
+            new Notification('Urban Fumig · Nueva solicitud', {
+              body: nueva ? `${nueva.empresa} — ${nueva.servicio}` : 'Tienes una nueva orden pendiente.',
+              icon: 'icono-192.png'
+            });
+          }
+        }
+        app.lastPendingCount = pendNow;
+
+        document.getElementById('login-view').classList.add('hidden');
+        document.getElementById('app-shell').classList.remove('hidden');
+        const rolLabel = app.rol === 'admin'
+          ? 'Administrador · Ricardo'
+          : app.rol === 'aplicador'
+            ? 'Aplicador · Toño'
+            : 'Cliente · ' + ((app.perfil && app.perfil.nombre) || app.nombre || app.usuario);
+        document.getElementById('top-role-tag').textContent = rolLabel;
+
+        renderPanel();
+      } catch (e) {
+        if (!silencioso) toast('Error de conexión con el servidor. Intenta actualizar.');
+      }
+    }
+
+    function estadoInfo(st) {
+      if (st === 'PENDIENTE') return { lbl: 'Pendiente', cls: 'naranja', idx: 0 };
+      if (st === 'EN_CAMINO') return { lbl: 'En camino', cls: 'naranja', idx: 1 };
+      if (st === 'EN_SITIO') return { lbl: 'En sitio', cls: 'naranja', idx: 2 };
+      return { lbl: 'Finalizada', cls: 'oscuro', idx: 3 };
+    }
+
+    function renderProgress(st) {
+      const idx = estadoInfo(st).idx;
+      const steps = ['1. Recibida', '2. En camino', '3. En sitio', '4. Certificada'];
+      return `<div class="progress-row">${steps.map((t, i) =>
+        `<div class="p-step ${i < idx ? 'done' : i === idx ? (idx === 3 ? 'done' : 'now') : ''}">${t}</div>`
+      ).join('')}</div>`;
+    }
+
+    function abrirCert(id) {
+      const s = app.solicitudes.find((x) => x.id === id);
+      if (!s) return;
+      document.getElementById('cert-title').textContent = `${s.empresa} · Folio #${s.folio || s.id}`;
+      document.getElementById('cert-extra').innerHTML = `
+        <strong>Servicio registrado:</strong> ${esc(s.servicio)} · <strong>Fecha:</strong> ${esc(s.fecha)} · <strong>Aplicador:</strong> ${esc(s.aplicador || 'Toño · Unidad #01')}<br>
+        <strong>Tratamiento:</strong> ${esc(s.tecnicas || 'Insuflado (Deltrac Forte), Asperjado (Temprid Bayer), Gel cebo (Maxforce)')}
+      `;
+      document.getElementById('cert-modal').classList.add('open');
+    }
+    window.abrirCert = abrirCert;
+
+    function renderPanel() {
+      const root = document.getElementById('app-content');
+      if (app.rol === 'cliente') renderCliente(root);
+      else if (app.rol === 'aplicador') renderAplicador(root);
+      else renderAdmin(root);
+    }
+
+    // ==================== PANEL CLIENTE ====================
+    function renderCliente(root) {
+      const activas = app.solicitudes.filter((x) => x.estado !== 'FINALIZADA');
+      const cerradas = app.solicitudes.filter((x) => x.estado === 'FINALIZADA');
+
+      root.innerHTML = `
+        <div class="hero-banner">
+          <div>
+            <div class="banner-kicker">Panel del Cliente</div>
+            <h1>Solicita atención inmediata</h1>
+            <p>Elige el servicio que necesitas, avisa al controlador en vivo y descarga tus certificados INSAI.</p>
+          </div>
+          <span class="chip naranja">${activas.length} activa${activas.length === 1 ? '' : 's'}</span>
+        </div>
+
+        <div class="grid-2">
+          <div class="card alerta">
+            <div class="card-bar">
+              <span>Nueva solicitud de servicio</span>
+              <span class="chip naranja">Respuesta rápida</span>
+            </div>
+            <div class="card-body">
+              <form id="form-new-req">
+                <div class="field-group">
+                  <label class="label" for="req-empresa">Tu casa, urbanismo, vehículo o empresa</label>
+                  <input id="req-empresa" class="field" required placeholder="Ej: Mi casa / Restaurante / Urbanismo" value="${esc(app.perfil && app.perfil.nombre ? app.perfil.nombre : '')}">
+                </div>
+                <div class="field-group">
+                  <label class="label" for="req-dir">Dirección o sector</label>
+                  <input id="req-dir" class="field" required placeholder="Ej: Pueblo Nuevo, San Cristóbal" value="San Cristóbal, Táchira">
+                </div>
+                <div class="field-group">
+                  <span class="label">Selecciona el servicio</span>
+                  <div class="services-grid" id="cli-svcs">
+                    ${SERVICIOS.map((s) => `
+                      <button type="button" class="svc-btn ${app.selectedSvc === s.nombre ? 'selected' : ''}" data-svc="${esc(s.nombre)}">
+                        <strong>${esc(s.nombre)}</strong>
+                        <span>${esc(s.desc)}</span>
+                      </button>
+                    `).join('')}
+                  </div>
+                </div>
+                <div class="field-group">
+                  <span class="label">Prioridad</span>
+                  <div class="prio-grid">
+                    <button type="button" class="prio-btn ${app.selectedPrio === 'URGENCIA' ? 'selected' : ''}" data-prio="URGENCIA">
+                      <strong style="color:var(--naranja);">Urgencia inmediata</strong>
+                      <small>Aviso prioritario al controlador</small>
+                    </button>
+                    <button type="button" class="prio-btn ${app.selectedPrio === 'PROGRAMADA' ? 'selected' : ''}" data-prio="PROGRAMADA">
+                      <strong>Inspección / Cotización</strong>
+                      <small>Visita técnica programada</small>
+                    </button>
+                  </div>
+                </div>
+                <div class="field-group">
+                  <label class="label" for="req-nota">Detalle o referencia</label>
+                  <input id="req-nota" class="field" placeholder="Ej: Cocina, áreas comunes o fumigación completa" value="Control residencial completo · áreas críticas y exterior">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" id="btn-send-req">Enviar solicitud ahora</button>
+              </form>
+            </div>
+          </div>
+
+          <div style="display:grid; gap:18px;">
+            <div class="card">
+              <div class="card-bar">
+                <span>Mis solicitudes en curso</span>
+                <span class="chip naranja">${activas.length}</span>
+              </div>
+              <div class="card-body">
+                ${activas.length === 0
+                  ? `<p style="margin:0; font-size:0.86rem; color:var(--suave);">Aún no tienes solicitudes activas. Cuando envíes una a la izquierda, verás el avance en tiempo real aquí.</p>`
+                  : `<div class="orders-stack">${activas.map((o) => {
+                      const info = estadoInfo(o.estado);
+                      return `
+                        <div class="order-item hot">
+                          <div class="order-top">
+                            <div>
+                              <h3>${esc(o.empresa)}</h3>
+                              <div style="font-size:0.78rem; color:var(--naranja); font-weight:700;">${esc(o.servicio)}</div>
+                            </div>
+                            <span class="chip ${info.cls}">${info.lbl}</span>
+                          </div>
+                          <div class="order-meta">
+                            <span><strong>Orden:</strong> ${esc(o.id)}</span>
+                            <span><strong>Técnico:</strong> ${esc(o.aplicador)}</span>
+                            ${o.hora_aceptado ? `<span><strong>Salió:</strong> ${esc(o.hora_aceptado)}</span>` : ''}
+                          </div>
+                          ${renderProgress(o.estado)}
+                        </div>`;
+                    }).join('')}</div>`
+                }
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-bar">
+                <span>Mis Certificados INSAI</span>
+                <span class="chip oscuro">${cerradas.length}</span>
+              </div>
+              <div class="card-body">
+                <div class="orders-stack">
+                  ${cerradas.slice(0, 6).map((c) => `
+                    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; padding:11px 13px; border-radius:11px; background:var(--fondo); border:1px solid var(--borde);">
+                      <div style="min-width:0;">
+                        <strong style="display:block; font-size:0.82rem; color:var(--oscuro); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${esc(c.folio || c.id)} · ${esc(c.empresa)}</strong>
+                        <span style="font-size:0.74rem; color:var(--suave);">${esc(c.servicio)} · ${esc(c.fecha)}</span>
+                      </div>
+                      <button type="button" class="btn btn-outline btn-sm" onclick="abrirCert('${esc(c.id)}')">Ver PDF</button>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      root.querySelectorAll('[data-svc]').forEach((b) => {
+        b.addEventListener('click', () => {
+          app.selectedSvc = b.dataset.svc;
+          root.querySelectorAll('[data-svc]').forEach((x) => x.classList.toggle('selected', x === b));
+        });
+      });
+      root.querySelectorAll('[data-prio]').forEach((b) => {
+        b.addEventListener('click', () => {
+          app.selectedPrio = b.dataset.prio;
+          root.querySelectorAll('[data-prio]').forEach((x) => x.classList.toggle('selected', x === b));
+        });
+      });
+      document.getElementById('form-new-req').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('btn-send-req');
+        btn.disabled = true; btn.textContent = 'Enviando al controlador...';
+        try {
+          const r = await api('crearSolicitud', [app.token, {
+            empresa: document.getElementById('req-empresa').value,
+            direccion: document.getElementById('req-dir').value,
+            servicio: app.selectedSvc,
+            prioridad: app.selectedPrio,
+            nota: document.getElementById('req-nota').value
+          }]);
+          if (r && r.ok) {
+            playPing();
+            toast('Solicitud enviada (' + r.solicitud.id + '). El controlador ya recibió el aviso.');
+            await cargarApp(false);
+          } else {
+            toast('No se pudo enviar la solicitud.');
+          }
+        } finally {
+          btn.disabled = false; btn.textContent = 'Enviar solicitud ahora';
+        }
+      });
+    }
+
+    // ==================== PANEL APLICADOR (TOÑO) ====================
+    function renderAplicador(root) {
+      const activas = app.solicitudes.filter((x) => x.estado !== 'FINALIZADA');
+      const cerradas = app.solicitudes.filter((x) => x.estado === 'FINALIZADA');
+
+      root.innerHTML = `
+        <div class="hero-banner">
+          <div>
+            <div class="banner-kicker">Panel del Aplicador en Calle</div>
+            <h1>${esc(app.nombre)} · Unidad Móvil #01</h1>
+            <p>Las solicitudes de clientes y gerencia entran aquí en tiempo real.</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <span class="chip naranja">${activas.length} activa${activas.length === 1 ? '' : 's'}</span>
+            <span class="chip">${cerradas.length} finalizadas</span>
+          </div>
+        </div>
+
+        <div class="orders-stack">
+          ${activas.length === 0 ? `
+            <div class="card">
+              <div class="card-bar"><span>Órdenes asignadas</span><span class="chip naranja">En guardia</span></div>
+              <div class="card-body" style="text-align:center; padding:36px 20px;">
+                <h3 style="margin:0 0 6px; color:var(--oscuro);">Sin órdenes pendientes en este momento</h3>
+                <p style="margin:0; font-size:0.86rem; color:var(--suave);">Apenas un cliente o administrador envíe una solicitud, aparecerá automáticamente aquí con sonido de alerta.</p>
+              </div>
+            </div>
+          ` : activas.map((o) => renderAplicadorCard(o)).join('')}
+        </div>
+
+        ${cerradas.length ? `
+          <div class="card" style="margin-top:24px;">
+            <div class="card-bar"><span>Servicios finalizados y certificados</span><span class="chip oscuro">${cerradas.length}</span></div>
+            <div class="card-body">
+              <div class="orders-stack">
+                ${cerradas.slice(0, 6).map((c) => `
+                  <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; padding:11px 13px; border-radius:11px; background:var(--fondo); border:1px solid var(--borde); flex-wrap:wrap;">
+                    <div>
+                      <strong style="display:block; font-size:0.85rem; color:var(--oscuro);">${esc(c.folio || c.id)} · ${esc(c.empresa)}</strong>
+                      <span style="font-size:0.75rem; color:var(--suave);">${esc(c.servicio)} · Cerrado ${esc(c.hora_cierre || c.fecha)} · ${c.fotos_count} foto(s)</span>
+                    </div>
+                    <button type="button" class="btn btn-outline btn-sm" onclick="abrirCert('${esc(c.id)}')">Ver Certificado</button>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        ` : ''}
+      `;
+
+      bindAplicadorActions(root);
+    }
+
+    function renderAplicadorCard(o) {
+      const info = estadoInfo(o.estado);
+      let body = '';
+      if (o.estado === 'PENDIENTE') {
+        body = `<button type="button" class="btn btn-primary btn-block" data-act="aceptar" data-id="${esc(o.id)}">Aceptar orden y salir al sitio</button>`;
+      } else if (o.estado === 'EN_CAMINO') {
+        body = `
+          <div style="padding:12px 14px; border-radius:10px; background:var(--oscuro); color:#FFFFFF; font-size:0.8rem; margin-bottom:12px;">
+            <strong style="color:var(--naranja);">En camino desde las ${esc(o.hora_aceptado || 'ahora')}</strong> — El cliente ya ve que vas rumbo al sitio.
+          </div>
+          <button type="button" class="btn btn-primary btn-block" data-act="llegar" data-id="${esc(o.id)}">Confirmar llegada al sitio</button>
+        `;
+      } else if (o.estado === 'EN_SITIO') {
+        body = `
+          <div class="label">Técnicas y químicos aplicados</div>
+          <div class="tech-list" data-tecs-for="${esc(o.id)}">
+            <label class="tech-item"><input type="checkbox" value="Insuflado (Deltrac Forte)" checked> Insuflado · Deltrac Forte</label>
+            <label class="tech-item"><input type="checkbox" value="Asperjado (Temprid Bayer)" checked> Asperjado · Temprid (Bayer)</label>
+            <label class="tech-item"><input type="checkbox" value="Gel cebo (Maxforce)" checked> Gel cebo · Maxforce</label>
+            <label class="tech-item"><input type="checkbox" value="Termonebulización (Permetrina)"> Termonebulización exterior</label>
+          </div>
+          <div class="field-group">
+            <label class="label">Observación técnica</label>
+            <input class="field" data-nota-for="${esc(o.id)}" value="Servicio ejecutado completamente bajo protocolo sanitario.">
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:12px; align-items:center;">
+            <label class="btn btn-outline btn-sm" style="cursor:pointer;">
+              + Subir foto de evidencia (${o.fotos_count})
+              <input type="file" accept="image/*" capture="environment" style="display:none;" data-foto-id="${esc(o.id)}">
+            </label>
+            <button type="button" class="btn btn-outline btn-sm" data-act="foto" data-id="${esc(o.id)}">+ Registrar foto rápida</button>
+          </div>
+          <button type="button" class="btn btn-primary btn-block" data-act="cerrar" data-id="${esc(o.id)}">Finalizar servicio y emitir Certificado INSAI</button>
+        `;
+      }
+
+      return `
+        <article class="card alerta">
+          <div class="card-bar ${o.estado === 'PENDIENTE' ? 'naranja' : ''}">
+            <span>${esc(o.id)} · ${esc(o.prioridad)}</span>
+            <span class="chip ${o.estado === 'PENDIENTE' ? 'oscuro' : 'naranja'}">${info.lbl}</span>
+          </div>
+          <div class="card-body">
+            <h3 style="margin:0 0 4px; font-size:1.06rem; color:var(--oscuro);">${esc(o.empresa)}</h3>
+            <div class="order-meta">
+              <span><strong>Servicio:</strong> ${esc(o.servicio)}</span>
+              <span><strong>Ubicación:</strong> ${esc(o.direccion)}</span>
+              <span><strong>Recibida:</strong> ${esc(o.fecha)}</span>
+            </div>
+            ${o.nota ? `<p style="margin:0 0 12px; font-size:0.84rem; color:var(--texto); background:var(--fondo); padding:10px 12px; border-radius:9px;">${esc(o.nota)}</p>` : ''}
+            ${renderProgress(o.estado)}
+            ${body}
+          </div>
+        </article>
+      `;
+    }
+
+    function bindAplicadorActions(root) {
+      root.querySelectorAll('[data-act]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const { act, id } = btn.dataset;
+          btn.disabled = true;
+          const origTxt = btn.textContent;
+          btn.textContent = 'Guardando...';
+          let extra = {};
+          if (act === 'cerrar') {
+            const box = root.querySelector(`[data-tecs-for="${id}"]`);
+            const checked = box ? [...box.querySelectorAll('input:checked')].map((i) => i.value) : [];
+            const notaEl = root.querySelector(`[data-nota-for="${id}"]`);
+            extra = {
+              tecnicas: checked.join(', ') || 'Control integral certificado',
+              nota_tecnica: notaEl ? notaEl.value : ''
+            };
+          }
+          try {
+            const r = await api('actualizarSolicitud', [app.token, id, act, extra]);
+            if (r && r.ok) {
+              toast(act === 'cerrar' ? 'Servicio cerrado y Certificado INSAI emitido.' : 'Estado actualizado en vivo.');
+              await cargarApp(false);
+            } else {
+              toast('No se pudo actualizar.');
+              btn.disabled = false; btn.textContent = origTxt;
+            }
+          } catch (_) {
+            toast('Error de conexión.');
+            btn.disabled = false; btn.textContent = origTxt;
+          }
+        });
+      });
+
+      root.querySelectorAll('[data-foto-id]').forEach((inp) => {
+        inp.addEventListener('change', async () => {
+          const file = inp.files && inp.files[0];
+          if (!file) return;
+          toast('Subiendo foto de evidencia...');
+          const reader = new FileReader();
+          reader.onload = async () => {
+            const base64 = String(reader.result || '').split(',')[1] || '';
+            const r = await api('actualizarSolicitud', [app.token, inp.dataset.fotoId, 'foto', {
+              foto: { tipo: file.type || 'image/jpeg', datos: base64 }
+            }]);
+            if (r && r.ok) {
+              toast('Foto guardada en evidencia.');
+              await cargarApp(false);
+            }
+          };
+          reader.readAsDataURL(file);
+        });
+      });
+    }
+
+    // ==================== ENCUESTAS POST-COTIZACIÓN (SOLO ADMIN + PDF) ====================
+    function esEncuesta(o) {
+      if (!o) return false;
+      const svc = String(o.servicio || '').toLowerCase();
+      const emp = String(o.empresa || '').toUpperCase();
+      const est = String(o.estado || '').toUpperCase();
+      return est === 'ENCUESTA' || svc.includes('encuesta') || emp.startsWith('ENCUESTA:');
+    }
+
+    function parsearEncuesta(o) {
+      const cliente = String(o.empresa || 'Anónimo').replace(/^ENCUESTA:\s*/i, '').trim() || 'Anónimo';
+      const motivoRaw = String(o.direccion || '').replace(/^Motivo:\s*/i, '').trim();
+      const motivos = motivoRaw ? motivoRaw.split(',').map((s) => s.trim()).filter(Boolean) : [];
+      const notaLimpia = String(o.nota || '').replace(/^\[[^\]]+\]\s*/, '').trim();
+      const campos = { precio: '', falto: [], prob: '', cuando: '', nota: '' };
+      notaLimpia.split(' | ').forEach((seg) => {
+        const s = seg.trim();
+        if (/^Precio:/i.test(s)) campos.precio = s.replace(/^Precio:\s*/i, '').trim();
+        else if (/^Falt[oó]:/i.test(s)) campos.falto = s.replace(/^Falt[oó]:\s*/i, '').split(',').map((x) => x.trim()).filter(Boolean);
+        else if (/^Pr[oó]x\.\s*prob:/i.test(s)) campos.prob = s.replace(/^Pr[oó]x\.\s*prob:\s*/i, '').trim();
+        else if (/^Cu[aá]ndo:/i.test(s)) campos.cuando = s.replace(/^Cu[aá]ndo:\s*/i, '').trim();
+        else if (/^Nota:/i.test(s)) campos.nota = s.replace(/^Nota:\s*/i, '').trim();
+        else if (s && !campos.nota) campos.nota = s;
+      });
+      return { cliente, motivos, ...campos };
+    }
+
+    window.abrirEncuestaPDF = function (id) {
+      const o = app.solicitudes.find((x) => x.id === id);
+      if (!o) return;
+      const d = parsearEncuesta(o);
+      const body = document.getElementById('survey-pdf-body');
+      body.innerHTML = `
+        <div class="spdf-hero">
+          <div class="spdf-logo-pill">
+            <img src="../assets/logo-horizontal.png" alt="Urban Fumig F.P.">
+          </div>
+          <div class="spdf-meta">
+            <strong>ENCUESTA POST-COTIZACIÓN · ${esc(o.id)}</strong>
+            <span>Recibida: ${esc(o.fecha || 'Hoy')} · San Cristóbal, Táchira</span>
+          </div>
+        </div>
+        <div class="spdf-title-bar">
+          <div>
+            <small>Cliente / Urbanismo evaluado</small>
+            <h2>${esc(d.cliente)}</h2>
+          </div>
+          <div class="spdf-score">
+            <strong>${esc(d.prob || '—')}</strong>
+            <span>Prob. próxima vez</span>
+          </div>
+        </div>
+        <div class="spdf-body">
+          <div class="spdf-card">
+            <div class="spdf-q">1. Motivo principal por el que no avanzaron esta vez</div>
+            ${d.motivos.length
+              ? `<div class="spdf-tags">${d.motivos.map((m) => `<span class="spdf-tag">${esc(m)}</span>`).join('')}</div>`
+              : `<p class="spdf-a">Sin especificar</p>`}
+          </div>
+
+          <div class="spdf-grid-2">
+            <div class="spdf-card dark-border">
+              <div class="spdf-q">2. Percepción del precio cotizado</div>
+              <p class="spdf-a">${esc(d.precio || 'No indicado')}</p>
+            </div>
+            <div class="spdf-card dark-border">
+              <div class="spdf-q">5. Cuándo estiman la próxima jornada</div>
+              <p class="spdf-a">${esc(d.cuando || 'No indicado')}</p>
+            </div>
+          </div>
+
+          <div class="spdf-card">
+            <div class="spdf-q">3. Debilidades detectadas / Qué faltó para un «sí»</div>
+            ${d.falto.length
+              ? `<div class="spdf-tags">${d.falto.map((m) => `<span class="spdf-tag">${esc(m)}</span>`).join('')}</div>`
+              : `<p class="spdf-a">No marcó opciones adicionales</p>`}
+          </div>
+
+          <div class="spdf-card dark-border">
+            <div class="spdf-q">Comentario libre del cliente</div>
+            <p class="spdf-a">${esc(d.nota || 'El cliente no dejó comentario escrito adicional.')}</p>
+          </div>
+        </div>
+        <div class="spdf-foot">
+          <div><strong>URBAN FUMIG F.P.</strong> · RIF V-28195335-0 · Edif. Servicentro Los Llanos #7-260, La Concordia, San Cristóbal · (0424) 719-8219</div>
+          <div class="perm">INSAI RRE-20240707120708E · RACDA 01-13-22-01-02-2024-195 · Conformidad Sanitaria C-01/F/B-N°0011</div>
+        </div>
+      `;
+      document.getElementById('survey-modal').classList.add('open');
+    };
+
+    // ==================== PANEL ADMINISTRADOR (RICARDO) ====================
+    function renderAdmin(root) {
+      const ordenes = app.solicitudes.filter((x) => !esEncuesta(x));
+      const encuestas = app.solicitudes.filter((x) => esEncuesta(x));
+      const pend = ordenes.filter((x) => x.estado === 'PENDIENTE').length;
+      const curso = ordenes.filter((x) => x.estado === 'EN_CAMINO' || x.estado === 'EN_SITIO').length;
+      const fin = ordenes.filter((x) => x.estado === 'FINALIZADA').length;
+      const lista = app.adminFilter === 'ENCUESTAS'
+        ? encuestas
+        : ordenes.filter((x) => {
+            if (app.adminFilter === 'PENDIENTE') return x.estado === 'PENDIENTE';
+            if (app.adminFilter === 'CURSO') return x.estado === 'EN_CAMINO' || x.estado === 'EN_SITIO';
+            if (app.adminFilter === 'FINALIZADA') return x.estado === 'FINALIZADA';
+            return true;
+          });
+
+      root.innerHTML = `
+        <div class="hero-banner">
+          <div>
+            <div class="banner-kicker">Panel de Dirección · Urban Fumig F.P.</div>
+            <h1>Control operativo en tiempo real</h1>
+            <p>Todas las solicitudes, encuestas de clientes, aplicadores y certificados INSAI sincronizados con tu Google Sheets.</p>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" id="btn-toggle-adm-new">${app.showAdminNew ? 'Cerrar formulario' : '+ Nueva orden rápida'}</button>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi hot">
+            <div class="kpi-lbl">Pendientes ahora</div>
+            <div class="kpi-val">${pend}</div>
+            <div class="kpi-note">Esperando controlador</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-lbl">En atención</div>
+            <div class="kpi-val">${curso}</div>
+            <div class="kpi-note">En camino o en sitio</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-lbl">Finalizadas</div>
+            <div class="kpi-val">${fin}</div>
+            <div class="kpi-note">Certificados emitidos</div>
+          </div>
+          <div class="kpi" style="cursor:pointer; border-color:rgba(254,81,0,0.45);" data-flt="ENCUESTAS" title="Ver encuestas recibidas">
+            <div class="kpi-lbl" style="color:var(--naranja);">Encuestas recibidas</div>
+            <div class="kpi-val">${encuestas.length}</div>
+            <div class="kpi-note">Toca aquí para ver / PDF</div>
+          </div>
+        </div>
+
+        ${app.showAdminNew ? `
+          <div class="card alerta" style="margin-bottom:20px;">
+            <div class="card-bar"><span>Despachar nueva orden desde Dirección</span><span class="chip naranja">Directo a Toño</span></div>
+            <div class="card-body">
+              <form id="form-adm-new" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; align-items:end;">
+                <div>
+                  <label class="label">Cliente / Urbanismo</label>
+                  <input id="adm-emp" class="field" required placeholder="Ej: Urbanización Villa Consuelo">
+                </div>
+                <div>
+                  <label class="label">Servicio</label>
+                  <select id="adm-svc" class="field">
+                    ${SERVICIOS.map((s) => `<option value="${esc(s.nombre)}">${esc(s.nombre)}</option>`).join('')}
+                  </select>
+                </div>
+                <div>
+                  <label class="label">Dirección / Nota</label>
+                  <input id="adm-nota" class="field" placeholder="Sector o detalle rápido">
+                </div>
+                <button type="submit" class="btn btn-primary" id="btn-adm-submit">Crear y avisar</button>
+              </form>
+            </div>
+          </div>
+        ` : ''}
+
+        <div class="card" style="margin-bottom:22px;">
+          <div class="card-bar">
+            <span>${app.adminFilter === 'ENCUESTAS' ? 'Encuestas de cotizaciones (' + lista.length + ')' : 'Órdenes y servicios registrados (' + lista.length + ')'}</span>
+            <span class="chip naranja">En vivo</span>
+          </div>
+          <div class="card-body">
+            <div class="filter-bar">
+              <div class="filter-pills">
+                ${[
+                  ['TODAS', 'Servicios (' + ordenes.length + ')'],
+                  ['PENDIENTE', 'Pendientes (' + pend + ')'],
+                  ['CURSO', 'En proceso (' + curso + ')'],
+                  ['FINALIZADA', 'Finalizadas (' + fin + ')'],
+                  ['ENCUESTAS', 'Encuestas (' + encuestas.length + ')']
+                ].map(([k, l]) => `<button type="button" class="filter-pill ${app.adminFilter === k ? 'active' : ''}" data-flt="${k}">${l}</button>`).join('')}
+              </div>
+            </div>
+
+            <div class="orders-stack">
+              ${lista.length === 0 ? `<p style="margin:8px 0; color:var(--suave); font-size:0.86rem;">No hay registros en esta categoría.</p>` : lista.map((o) => {
+                if (esEncuesta(o)) {
+                  const d = parsearEncuesta(o);
+                  return `
+                    <div class="order-item" style="border-left:4px solid var(--naranja);">
+                      <div class="order-top">
+                        <div>
+                          <h3>${esc(d.cliente)}</h3>
+                          <div style="font-size:0.8rem; color:var(--naranja); font-weight:700;">Encuesta Post-Cotización · ${esc(o.id)}</div>
+                        </div>
+                        <span class="chip naranja">${d.prob ? 'Próx. prob: ' + esc(d.prob) : 'Encuesta'}</span>
+                      </div>
+                      <div class="order-meta">
+                        <span><strong>Fecha:</strong> ${esc(o.fecha)}</span>
+                        <span><strong>Motivo:</strong> ${esc(d.motivos.join(', ') || 'Ver ficha')}</span>
+                        ${d.precio ? `<span><strong>Precio:</strong> ${esc(d.precio)}</span>` : ''}
+                        ${d.cuando ? `<span><strong>Próxima:</strong> ${esc(d.cuando)}</span>` : ''}
+                      </div>
+                      ${d.falto.length ? `<p style="margin:0 0 6px; font-size:0.8rem; color:var(--texto);"><strong>Qué faltó / debilidades:</strong> ${esc(d.falto.join(', '))}</p>` : ''}
+                      ${d.nota ? `<p style="margin:0 0 10px; font-size:0.82rem; color:var(--suave); font-style:italic;">«${esc(d.nota)}»</p>` : ''}
+                      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="abrirEncuestaPDF('${esc(o.id)}')">Ver / Imprimir PDF</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-del="${esc(o.id)}">Eliminar</button>
+                      </div>
+                    </div>
+                  `;
+                }
+                const info = estadoInfo(o.estado);
+                return `
+                  <div class="order-item ${o.estado !== 'FINALIZADA' ? 'hot' : ''}">
+                    <div class="order-top">
+                      <div>
+                        <h3>${esc(o.empresa)}</h3>
+                        <div style="font-size:0.8rem; color:var(--naranja); font-weight:700;">${esc(o.servicio)} · ${esc(o.id)}</div>
+                      </div>
+                      <span class="chip ${info.cls}">${info.lbl}</span>
+                    </div>
+                    <div class="order-meta">
+                      <span><strong>Fecha:</strong> ${esc(o.fecha)}</span>
+                      <span><strong>Sector:</strong> ${esc(o.direccion)}</span>
+                      <span><strong>Aplicador:</strong> ${esc(o.aplicador)}</span>
+                      <span><strong>Fotos:</strong> ${o.fotos_count}</span>
+                    </div>
+                    ${o.nota ? `<p style="margin:0 0 10px; font-size:0.82rem; color:var(--texto);">${esc(o.nota)}</p>` : ''}
+                    ${renderProgress(o.estado)}
+                    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
+                      ${o.estado === 'PENDIENTE' ? `<button type="button" class="btn btn-primary btn-sm" data-act="aceptar" data-id="${esc(o.id)}">Marcar en camino</button>` : ''}
+                      ${o.estado === 'EN_CAMINO' ? `<button type="button" class="btn btn-primary btn-sm" data-act="llegar" data-id="${esc(o.id)}">Marcar en sitio</button>` : ''}
+                      ${o.estado === 'EN_SITIO' ? `<button type="button" class="btn btn-primary btn-sm" data-act="cerrar" data-id="${esc(o.id)}">Finalizar y certificar</button>` : ''}
+                      ${o.estado === 'FINALIZADA' ? `<button type="button" class="btn btn-outline btn-sm" onclick="abrirCert('${esc(o.id)}')">Ver Certificado INSAI</button>` : ''}
+                      <button type="button" class="btn btn-danger btn-sm" data-del="${esc(o.id)}">Eliminar</button>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+
+        ${app.canales ? `
+          <div class="card">
+            <div class="card-bar">
+              <span>Notificaciones reales al celular (iPhone / Android con pantalla bloqueada)</span>
+              <span class="chip naranja">ntfy + Correo</span>
+            </div>
+            <div class="card-body">
+              <p style="margin:0 0 14px; font-size:0.84rem; color:var(--suave);">
+                Descarga la app gratis <strong>ntfy</strong> en tu iPhone/Android (y en el de Toño), toca <strong>+</strong> y pega el canal privado que te corresponde. Cada solicitud nueva sonará al segundo aunque el celular esté bloqueado.
+              </p>
+              <div class="notify-box" style="margin-bottom:14px;">
+                <div class="channel-pill">
+                  <div>
+                    <div style="font-size:0.71rem; font-weight:800; color:var(--naranja); text-transform:uppercase;">Canal Admin (Ricardo)</div>
+                    <code>${esc(app.canales.admin)}</code>
+                  </div>
+                  <button type="button" class="btn btn-outline btn-sm" data-copy="${esc(app.canales.admin)}">Copiar</button>
+                </div>
+                <div class="channel-pill">
+                  <div>
+                    <div style="font-size:0.71rem; font-weight:800; color:var(--oscuro); text-transform:uppercase;">Canal Aplicador (Toño)</div>
+                    <code>${esc(app.canales.aplicador)}</code>
+                  </div>
+                  <button type="button" class="btn btn-outline btn-sm" data-copy="${esc(app.canales.aplicador)}">Copiar</button>
+                </div>
+              </div>
+              <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+                <button type="button" class="btn btn-primary btn-sm" id="btn-test-notif">Enviar notificación de prueba</button>
+                <a href="${esc(app.scriptEditorUrl)}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Autorizar correo/push en Google (solo 1 vez)</a>
+              </div>
+              <div id="test-notif-res" style="margin-top:10px; font-size:0.78rem; color:var(--suave);"></div>
+            </div>
+          </div>
+        ` : ''}
+      `;
+
+      document.getElementById('btn-toggle-adm-new').addEventListener('click', () => {
+        app.showAdminNew = !app.showAdminNew;
+        renderPanel();
+      });
+      const admForm = document.getElementById('form-adm-new');
+      if (admForm) {
+        admForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const b = document.getElementById('btn-adm-submit');
+          b.disabled = true; b.textContent = 'Creando...';
+          const r = await api('crearSolicitud', [app.token, {
+            empresa: document.getElementById('adm-emp').value,
+            direccion: 'San Cristóbal, Táchira',
+            servicio: document.getElementById('adm-svc').value,
+            prioridad: 'URGENCIA',
+            nota: document.getElementById('adm-nota').value
+          }]);
+          if (r && r.ok) {
+            app.showAdminNew = false;
+            toast('Orden creada y enviada a Toño.');
+            await cargarApp(false);
+          } else {
+            b.disabled = false; b.textContent = 'Crear y avisar';
+          }
+        });
+      }
+      root.querySelectorAll('[data-flt]').forEach((b) => {
+        b.addEventListener('click', () => { app.adminFilter = b.dataset.flt; renderPanel(); });
+      });
+      bindAplicadorActions(root);
+      root.querySelectorAll('[data-del]').forEach((b) => {
+        b.addEventListener('click', async () => {
+          b.disabled = true; b.textContent = 'Eliminando...';
+          const r = await api('eliminarSolicitud', [app.token, b.dataset.del]);
+          if (r && r.ok) { toast('Orden eliminada.'); await cargarApp(false); }
+        });
+      });
+      root.querySelectorAll('[data-copy]').forEach((b) => {
+        b.addEventListener('click', () => {
+          navigator.clipboard.writeText(b.dataset.copy).then(() => toast('Canal copiado: ' + b.dataset.copy)).catch(() => {});
+        });
+      });
+      const testBtn = document.getElementById('btn-test-notif');
+      if (testBtn) {
+        testBtn.addEventListener('click', async () => {
+          testBtn.disabled = true; testBtn.textContent = 'Enviando prueba...';
+          const out = document.getElementById('test-notif-res');
+          try {
+            const r = await api('probarNotificacion', [app.token]);
+            if (r && r.ok) {
+              const pOk = r.push && r.push.ok;
+              const mOk = r.mail && r.mail.ok;
+              out.innerHTML = `<strong>Resultado:</strong> Push ntfy: ${pOk ? 'Enviado' : 'Falta autorizar en Google'} · Correo: ${mOk ? 'Enviado a Urbanfumig@gmail.com' : 'Falta autorizar en Google (abre el botón de al lado y ejecuta activarNotificacionesYCorreo)'}`;
+              if (pOk || mOk) toast('Prueba enviada correctamente.');
+            }
+          } finally {
+            testBtn.disabled = false; testBtn.textContent = 'Enviar notificación de prueba';
+          }
+        });
+      }
+    }
+
+    // ==================== EVENTOS GLOBALES ====================
+    document.getElementById('go-register').addEventListener('click', () => setAuthMode('register'));
+    document.getElementById('go-forgot').addEventListener('click', () => setAuthMode('forgot'));
+    document.getElementById('back-from-reg').addEventListener('click', () => setAuthMode('login'));
+    document.getElementById('back-from-forgot').addEventListener('click', () => setAuthMode('login'));
+
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('reg-err');
+      const btn = document.getElementById('btn-register');
+      err.textContent = '';
+      btn.disabled = true; btn.textContent = 'Creando cuenta...';
+      try {
+        const r = await api('registrarCuenta', [{
+          nombre: document.getElementById('reg-nombre').value,
+          correo: document.getElementById('reg-correo').value,
+          telefono: document.getElementById('reg-tel').value,
+          clave: document.getElementById('reg-pass').value
+        }]);
+        if (!r || !r.ok) {
+          const mapa = {
+            falta_nombre: 'Escribe tu nombre o empresa.',
+            correo_invalido: 'Escribe un correo electrónico válido.',
+            clave_corta: 'La contraseña debe tener al menos 4 caracteres.',
+            correo_existe: 'Ese correo ya tiene cuenta. Usa «¿Olvidaste tu contraseña?».',
+            ocupado: 'Servidor ocupado, intenta en un segundo.'
+          };
+          err.textContent = mapa[r && r.error] || 'No se pudo crear la cuenta.';
+          return;
+        }
+        app.token = r.sesion;
+        localStorage.setItem(KEY_SESION, r.sesion);
+        toast('¡Cuenta creada! Bienvenido a Urban Fumig.');
+        await cargarApp(false);
+        clearInterval(app.pollTimer);
+        app.pollTimer = setInterval(() => cargarApp(true), 9000);
+      } catch (_) {
+        err.textContent = 'Error de conexión. Intenta de nuevo.';
+      } finally {
+        btn.disabled = false; btn.textContent = 'Crear mi cuenta';
+      }
+    });
+
+    document.getElementById('forgot-step1').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('rec-err1');
+      const btn = document.getElementById('btn-rec-send');
+      err.textContent = '';
+      btn.disabled = true; btn.textContent = 'Enviando código...';
+      try {
+        const r = await api('solicitarRecuperacion', [document.getElementById('rec-ident').value]);
+        if (!r || !r.ok) {
+          if (r && r.error === 'correo_invalido') {
+            err.textContent = 'Escribe un correo electrónico válido.';
+          } else if (r && r.error === 'no_encontrado') {
+            err.textContent = 'No encontramos una cuenta con ese correo electrónico.';
+          } else if (r && r.error === 'correo_no_disponible') {
+            err.innerHTML = 'El envío automático por correo está pendiente de activar. Escríbenos por <a href="https://wa.me/584247198219?text=Hola%20Urban%20Fumig%2C%20necesito%20recuperar%20mi%20contrase%C3%B1a" target="_blank" style="color:var(--naranja);text-decoration:underline;">WhatsApp (0424) 719-8219</a>.';
+          } else {
+            err.textContent = 'No se pudo enviar el código. Intenta de nuevo.';
+          }
+          return;
+        }
+        app.recUsuario = r.usuario;
+        document.getElementById('rec-sent-info').textContent = 'Enviamos un código de 6 dígitos a ' + r.correo;
+        document.getElementById('forgot-step1').classList.add('hidden');
+        document.getElementById('forgot-step2').classList.remove('hidden');
+      } catch (_) {
+        err.textContent = 'Error de conexión. Intenta de nuevo.';
+      } finally {
+        btn.disabled = false; btn.textContent = 'Enviar código a mi correo';
+      }
+    });
+
+    document.getElementById('forgot-step2').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('rec-err2');
+      const btn = document.getElementById('btn-rec-confirm');
+      err.textContent = '';
+      btn.disabled = true; btn.textContent = 'Actualizando contraseña...';
+      try {
+        const r = await api('confirmarRecuperacion', [
+          app.recUsuario,
+          document.getElementById('rec-code').value,
+          document.getElementById('rec-newpass').value
+        ]);
+        if (!r || !r.ok) {
+          err.textContent = r && r.error === 'clave_corta'
+            ? 'La nueva contraseña debe tener al menos 4 caracteres.'
+            : 'El código es incorrecto o venció. Solicita uno nuevo.';
+          return;
+        }
+        showLogin('', '¡Contraseña actualizada! Ya puedes iniciar sesión con tu clave nueva.');
+      } catch (_) {
+        err.textContent = 'Error de conexión. Intenta de nuevo.';
+      } finally {
+        btn.disabled = false; btn.textContent = 'Guardar nueva contraseña';
+      }
+    });
+    document.getElementById('btn-toggle-pass').addEventListener('click', () => {
+      const i = document.getElementById('inp-pass');
+      const b = document.getElementById('btn-toggle-pass');
+      i.type = i.type === 'password' ? 'text' : 'password';
+      b.textContent = i.type === 'password' ? 'Ver' : 'Ocultar';
+    });
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const err = document.getElementById('login-err');
+      const btn = document.getElementById('btn-login');
+      err.textContent = '';
+      btn.disabled = true; btn.textContent = 'Verificando...';
+      try {
+        const u = document.getElementById('inp-user').value.trim();
+        const p = document.getElementById('inp-pass').value;
+        const r = await api('iniciarSesion', [u, p]);
+        if (!r || !r.ok) {
+          err.textContent = r && r.error === 'bloqueado'
+            ? 'Demasiados intentos. Espera 15 minutos.'
+            : r && r.error === 'correo_invalido'
+              ? 'Escribe un correo electrónico válido.'
+              : 'Correo o contraseña incorrectos.';
+          return;
+        }
+        app.token = r.sesion;
+        app.lastPendingCount = null;
+        localStorage.setItem(KEY_SESION, r.sesion);
+        await cargarApp(false);
+        clearInterval(app.pollTimer);
+        app.pollTimer = setInterval(() => cargarApp(true), 9000);
+      } catch (_) {
+        err.textContent = 'Error de conexión. Intenta de nuevo.';
+      } finally {
+        btn.disabled = false; btn.textContent = 'Entrar a la plataforma';
+      }
+    });
+
+    document.getElementById('btn-notify').addEventListener('click', async () => {
+      if (!('Notification' in window)) return toast('Este navegador no soporta alertas del sistema.');
+      const perm = await Notification.requestPermission();
+      if (perm === 'granted') {
+        document.getElementById('btn-notify').textContent = 'Alertas activas';
+        toast('Alertas del sistema activadas.');
+        new Notification('Urban Fumig', { body: 'Recibirás aviso cuando entre una solicitud nueva.', icon: 'icono-192.png' });
+      } else {
+        toast('Permiso de notificaciones bloqueado en el navegador.');
+      }
+    });
+    if ('Notification' in window && Notification.permission === 'granted') {
+      document.getElementById('btn-notify').textContent = 'Alertas activas';
+    }
+
+    document.getElementById('btn-refresh').addEventListener('click', () => {
+      toast('Actualizando...');
+      cargarApp(false);
+    });
+
+    document.getElementById('btn-logout').addEventListener('click', async () => {
+      const t = app.token;
+      localStorage.removeItem(KEY_SESION);
+      app.token = '';
+      app.lastPendingCount = null;
+      showLogin();
+      if (t) api('cerrarSesion', [t]).catch(() => {});
+    });
+
+    document.getElementById('btn-close-cert').addEventListener('click', () => {
+      document.getElementById('cert-modal').classList.remove('open');
+    });
+    document.getElementById('cert-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'cert-modal') e.currentTarget.classList.remove('open');
+    });
+
+    document.getElementById('btn-close-survey').addEventListener('click', () => {
+      document.getElementById('survey-modal').classList.remove('open');
+    });
+    document.getElementById('survey-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'survey-modal') e.currentTarget.classList.remove('open');
+    });
+    document.getElementById('btn-print-survey').addEventListener('click', () => {
+      document.body.classList.add('printing-survey');
+      const cleanup = () => document.body.classList.remove('printing-survey');
+      window.addEventListener('afterprint', cleanup, { once: true });
+      window.print();
+      setTimeout(cleanup, 1500);
+    });
+
+    const forceLogin = new URLSearchParams(location.search).get('login') === '1';
+    if (forceLogin) {
+      localStorage.removeItem(KEY_SESION);
+      app.token = '';
+      history.replaceState({}, '', location.pathname);
+    }
+
+    if (app.token) {
+      cargarApp(false).then(() => {
+        if (app.token) app.pollTimer = setInterval(() => cargarApp(true), 9000);
+      });
+    } else {
+      showLogin();
+    }
+  </script>
+</body>
+</html>

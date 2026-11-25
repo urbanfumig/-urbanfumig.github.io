@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Urban Fumig · Control Profesional de Plagas en San Cristóbal</title>
+  <meta name="description" content="Urban Fumig F.P. en San Cristóbal, Táchira: Carros $30, Camionetas $40, Urbanismos $30/casa, Colchones $50, Tanques $80, Casas desde $80. Paga en cuotas con Cashea. Empresa avalada INSAI y RACDA.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://urbanfumig.com/">
+  <meta property="og:title" content="Urban Fumig · Control de Plagas en San Cristóbal (Cashea disponible)">
+  <meta property="og:description" content="Carros $30 · Camionetas $40 · Urbanismos $30/casa · Colchones $50 · Tanques $80 · Casas desde $80. Sin olor, seguro para niños y mascotas. Avalados INSAI y RACDA.">
+  <meta property="og:image" content="https://urbanfumig.com/assets/certificado-real.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#141414">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Urban Fumig">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="assets/icono-192.png">
+  <link rel="apple-touch-icon" href="assets/icono-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --naranja: #FE5100;
+      --naranja-hover: #E24700;
+      --wa: #25D366;
+      --wa-hover: #1EB858;
+      --hero-bg: #141414;
+      --oscuro: #1C1C1C;
+      --texto: #2B2B2B;
+      --suave: #616161;
+      --fondo: #F6F4F0;
+      --tarjeta: #FFFFFF;
+      --borde: #E5E2DC;
+      --radio: 18px;
+      --font-display: "Anton", Impact, "Arial Narrow", sans-serif;
+      --font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      background: var(--hero-bg);
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--texto);
+      background: var(--fondo);
+      overflow-x: hidden;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* =====================================================================
+       NAVBAR PÚBLICA LIMPIA (SIN PESTAÑAS DE DEMO — SOLO INICIAR SESIÓN)
+       ===================================================================== */
+    .topbar-wrap {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 90;
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+      pointer-events: none;
+    }
+    .topbar {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: min(1020px, 100%);
+      padding: 8px 12px 8px 14px;
+      border-radius: 999px;
+      background: rgba(24, 24, 24, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .topbar.scrolled {
+      background: rgba(255, 255, 255, 0.96);
+      border-color: rgba(28, 28, 28, 0.08);
+      box-shadow: 0 10px 30px rgba(20, 20, 20, 0.1);
+    }
+
+    .brand { display: flex; align-items: center; flex-shrink: 0; }
+    .brand-logo-box {
+      background: #FFFFFF;
+      border-radius: 999px;
+      padding: 5px 13px 5px 10px;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease, padding 0.3s ease;
+    }
+    .topbar.scrolled .brand-logo-box { background: transparent; padding: 2px 6px; }
+    .logo-full { height: 28px; width: auto; object-fit: contain; }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-link {
+      font-size: 0.81rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.86);
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-link:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.1); }
+    .topbar.scrolled .nav-link { color: var(--oscuro); }
+    .topbar.scrolled .nav-link:hover { background: var(--fondo); }
+
+    .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .login-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--naranja);
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: background 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .login-pill svg { width: 14px; height: 14px; }
+    .login-pill:hover { background: var(--naranja-hover); transform: translateY(-1px); }
+
+    .container { width: min(1140px, 100%); margin: 0 auto; padding: 0 24px; }
+
+    /* =====================================================================
+       1. HERO GENERAL (TODOS LOS 9 SERVICIOS + RESPUESTA INMEDIATA)
+       ===================================================================== */
+    .hero-stage {
+      position: relative;
+      background: var(--hero-bg);
+      color: #FFFFFF;
+      min-height: min(860px, 100svh);
+      padding: 122px 0 76px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+      gap: 28px;
+      align-items: center;
+    }
+    .hero-left h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.95rem, 5.2vw, 4.85rem);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      margin: 0 0 18px;
+      color: #FFFFFF;
+    }
+    .hero-hl { color: var(--naranja); }
+    .hero-lead {
+      font-size: clamp(0.96rem, 1.25vw, 1.08rem);
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 520px;
+      margin: 0 0 36px;
+      line-height: 1.6;
+    }
+
+    /* 2 TARJETAS CTA CON ÍCONOS 3D */
+    .hero-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 500px;
+      margin-bottom: 36px;
+    }
+    .hero-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 148px;
+      padding: 22px 20px 18px;
+      border-radius: 22px;
+      overflow: visible;
+      transition: transform 0.25s cubic-bezier(.22, 1, .36, 1), border-color 0.25s ease;
+    }
+    .hero-card.primary-card {
+      background: linear-gradient(145deg, #FE5100 0%, #D94100 100%);
+      box-shadow: 0 16px 34px rgba(254, 81, 0, 0.26);
+      color: #FFFFFF;
+    }
+    .hero-card.secondary-card {
+      background: #222222;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
+      color: #FFFFFF;
+    }
+    .hero-card:hover { transform: translateY(-5px); }
+    .hero-card.secondary-card:hover { border-color: rgba(254, 81, 0, 0.65); }
+
+    .hero-card-3d {
+      position: absolute;
+      top: -32px;
+      right: -10px;
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.4));
+      animation: iconFloat 4.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-card.secondary-card .hero-card-3d { animation-delay: -2.1s; }
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    .hero-card strong {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1.05;
+      letter-spacing: 0.015em;
+      text-transform: uppercase;
+      max-width: 155px;
+    }
+    .hero-card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .hero-card-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      display: grid;
+      place-items: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .hero-card:hover .hero-card-arrow {
+      transform: translate(2px, 2px);
+      background: #FFFFFF;
+      color: var(--naranja);
+    }
+
+    .hero-stats { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; }
+    .hero-stat { display: flex; align-items: center; gap: 10px; }
+    .hero-stat-icon { width: 34px; height: 34px; display: grid; place-items: center; flex-shrink: 0; }
+    .hero-stat-icon img { width: 30px; height: 30px; object-fit: contain; }
+    .stat-num { font-family: var(--font-display); font-size: 1.2rem; line-height: 1.05; color: #FFFFFF; }
+    .stat-lbl { font-size: 0.7rem; font-weight: 500; color: rgba(255, 255, 255, 0.62); }
+    .hero-stat-sep { width: 1px; height: 26px; background: rgba(255, 255, 255, 0.14); }
+
+    .hero-right { display: flex; justify-content: center; align-items: flex-end; }
+    .hero-portrait-wrap { width: min(500px, 100%); margin: 0 auto; }
+    .hero-portrait {
+      width: 100%;
+      height: auto;
+      mask-image: radial-gradient(ellipse 92% 94% at 50% 48%, #000 72%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 92% 94% at 50% 48%, #000 72%, transparent 100%);
+    }
+
+    /* =====================================================================
+       2. DOBLE CINTA DIAGONAL ANIMADA
+       ===================================================================== */
+    .marquee-stage {
+      position: relative;
+      background: linear-gradient(180deg, var(--hero-bg) 50%, var(--fondo) 50%);
+      padding: 22px 0 32px;
+      overflow: hidden;
+    }
+    .ribbon {
+      width: 112%;
+      margin-left: -6%;
+      padding: 13px 0;
+      overflow: hidden;
+      display: flex;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+    }
+    .ribbon-a { background: var(--naranja); color: #FFFFFF; transform: rotate(-1.7deg); position: relative; z-index: 3; }
+    .ribbon-b { background: #1C1C1C; color: #FFFFFF; transform: rotate(1.3deg); margin-top: -12px; position: relative; z-index: 2; }
+    .ribbon-track {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      white-space: nowrap;
+      will-change: transform;
+      animation: tapeLeft 28s linear infinite;
+    }
+    .ribbon-b .ribbon-track { animation: tapeRight 32s linear infinite; }
+    .ribbon-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--font-display);
+      font-size: clamp(1.16rem, 2.1vw, 1.52rem);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .ribbon-b .ribbon-item em { font-style: normal; color: var(--naranja); }
+    .ribbon-item img { width: 32px; height: 32px; object-fit: contain; }
+    @keyframes tapeLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes tapeRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+    /* =====================================================================
+       3. LOS 9 SERVICIOS PROTAGONISTAS (EQUILIBRADOS E INTERACTIVOS)
+       ===================================================================== */
+    .services-showcase { padding: 76px 0 76px; background: var(--fondo); }
+    .showcase-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+    .showcase-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+      line-height: 1;
+      text-transform: uppercase;
+      margin: 0;
+      color: var(--oscuro);
+    }
+    .showcase-head h2 span { color: var(--naranja); }
+    .showcase-head p { margin: 0; max-width: 450px; font-size: 0.92rem; color: var(--suave); }
+
+    .nine-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+    .nine-card {
+      text-align: left;
+      background: #FFFFFF;
+      border: 1.5px solid var(--borde);
+      border-radius: 18px;
+      padding: 22px 20px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .nine-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--naranja);
+      box-shadow: 0 14px 30px rgba(20, 20, 20, 0.07);
+    }
+    .nine-card.selected {
+      background: #FFF6F1;
+      border-color: var(--naranja);
+      box-shadow: 0 12px 26px rgba(254, 81, 0, 0.14);
+    }
+    .nine-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .nine-num {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--naranja);
+      line-height: 1;
+    }
+    .nine-tag {
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3px 8px;
+      border-radius: 5px;
+      background: var(--fondo);
+      color: var(--suave);
+    }
+    .nine-card.selected .nine-tag { background: var(--naranja); color: #FFFFFF; }
+    .nine-card h3 { margin: 6px 0 4px; font-size: 1.04rem; font-weight: 800; color: var(--oscuro); }
+    .nine-card p { margin: 0; font-size: 0.82rem; color: var(--suave); line-height: 1.48; }
+    .nine-price {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: #1C1C1C;
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+    .nine-price em { font-style: normal; color: #FF8C52; font-weight: 700; }
+    .nine-card.selected .nine-price { background: var(--naranja); }
+    .nine-card.selected .nine-price em { color: #FFF3EC; }
+    .nine-go { font-size: 0.76rem; font-weight: 800; color: var(--naranja); }
+
+    .cashea-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(254, 81, 0, 0.35);
+      background: #FFF6F1;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--oscuro);
+    }
+    .cashea-toggle input { width: 18px; height: 18px; accent-color: var(--naranja); cursor: pointer; flex-shrink: 0; }
+    .cashea-toggle small { display: block; font-size: 0.72rem; font-weight: 500; color: var(--suave); }
+
+    .wa-trust-strip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      font-size: 0.75rem;
+      line-height: 1.48;
+      color: rgba(255, 255, 255, 0.86);
+    }
+    .wa-trust-strip strong { color: #FF8C52; }
+    .wa-permisos {
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.14);
+      font-size: 0.69rem;
+      color: rgba(255, 255, 255, 0.66);
+    }
+
+    /* =====================================================================
+       4. SOLICITUD REAL CON WHATSAPP DINÁMICO (SERVICIO + URGENCIA → WA)
+       ===================================================================== */
+    .request-band {
+      padding: 78px 0 86px;
+      background: #FFFFFF;
+      border-top: 1px solid var(--borde);
+      border-bottom: 1px solid var(--borde);
+    }
+    .req-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.88fr);
+      gap: 26px;
+      align-items: start;
+    }
+    .req-card {
+      background: var(--fondo);
+      border: 1px solid var(--borde);
+      border-radius: 22px;
+      padding: 26px;
+    }
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--oscuro);
+      margin: 0 0 12px;
+    }
+    .step-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--naranja);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .req-block { margin-bottom: 22px; }
+    .req-block:last-child { margin-bottom: 0; }
+
+    .svc-pills {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .svc-pill {
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 11px;
+      border: 1.5px solid var(--borde);
+      background: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--oscuro);
+      transition: all 0.16s ease;
+    }
+    .svc-pill:hover { border-color: var(--oscuro); }
+    .svc-pill.active {
+      border-color: var(--naranja);
+      background: #FFF4EE;
+      color: var(--naranja);
+    }
+
+    .urgency-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .urg-btn {
+      text-align: left;
+      padding: 13px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--borde);
+      background: #FFFFFF;
+      transition: all 0.16s ease;
+    }
+    .urg-btn:hover { border-color: var(--oscuro); }
+    .urg-btn.active {
+      border-color: var(--naranja);
+      background: #FFF4EE;
+    }
+    .urg-btn strong { display: block; font-size: 0.84rem; color: var(--oscuro); margin-bottom: 2px; }
+    .urg-btn.active strong { color: var(--naranja); }
+    .urg-btn span { display: block; font-size: 0.72rem; color: var(--suave); line-height: 1.3; }
+
+    .fields-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .field {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--borde);
+      background: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--oscuro);
+      outline: none;
+    }
+    .field:focus { border-color: var(--naranja); }
+
+    /* TARJETA DERECHA: VISTA PREVIA EN VIVO DEL MENSAJE DE WHATSAPP */
+    .wa-card {
+      background: var(--hero-bg);
+      color: #FFFFFF;
+      border-radius: 22px;
+      padding: 26px;
+      border-top: 5px solid var(--wa);
+      box-shadow: 0 22px 50px rgba(20, 20, 20, 0.14);
+      position: sticky;
+      top: 94px;
+    }
+    .wa-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .wa-card-top strong { font-size: 0.92rem; }
+    .wa-card-top span { font-size: 0.75rem; color: var(--wa); font-weight: 700; }
+
+    .wa-preview-box {
+      background: #1F2C24;
+      border: 1px solid rgba(37, 211, 102, 0.28);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      color: #ECFDF3;
+      white-space: pre-line;
+      margin-bottom: 18px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 0;
+      font-size: 0.86rem;
+      font-weight: 700;
+      transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-wa { background: var(--wa); color: #0B1F12; font-weight: 800; }
+    .btn-wa:hover { background: var(--wa-hover); transform: translateY(-2px); }
+    .btn-primary { background: var(--naranja); color: #FFFFFF; }
+    .btn-primary:hover { background: var(--naranja-hover); transform: translateY(-2px); }
+    .btn-outline-light { background: transparent; color: #FFFFFF; border: 1.5px solid rgba(255, 255, 255, 0.34); }
+    .btn-outline-light:hover { background: #FFFFFF; color: var(--oscuro); border-color: #FFFFFF; }
+    .btn-outline { background: #FFFFFF; color: var(--oscuro); border: 1.5px solid var(--oscuro); }
+    .btn-outline:hover { background: var(--oscuro); color: #FFFFFF; }
+    .btn-sm { padding: 8px 16px; font-size: 0.76rem; }
+    .btn-block { width: 100%; }
+
+    .wa-meta-row {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .wa-meta-row img { height: 26px; width: auto; }
+
+    /* =====================================================================
+       5. CÓMO FUNCIONA (4 PASOS CLAROS)
+       ===================================================================== */
+    .method-section { padding: 72px 0 76px; background: var(--fondo); }
+    .method-header { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+    .method-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+      line-height: 1.02;
+      text-transform: uppercase;
+      margin: 0;
+      color: var(--oscuro);
+    }
+    .method-header h2 span { color: var(--naranja); }
+    .method-wrap { position: relative; }
+    .method-line-svg { position: absolute; top: 44px; left: 8%; width: 84%; height: 40px; pointer-events: none; z-index: 0; }
+    .method-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 24px; }
+    .method-step { text-align: center; }
+    .method-icon-box { position: relative; width: 106px; height: 106px; margin: 0 auto 16px; display: grid; place-items: center; }
+    .method-icon-box img { width: 92px; height: 92px; object-fit: contain; filter: drop-shadow(0 12px 16px rgba(20, 20, 20, 0.14)); }
+    .step-num-badge {
+      position: absolute; top: 0; right: 0; width: 32px; height: 32px; border-radius: 50%;
+      background: var(--naranja); color: #FFFFFF; font-family: var(--font-display);
+      font-size: 0.92rem; display: grid; place-items: center; border: 3px solid var(--fondo);
+    }
+    .method-step h3 { margin: 0 0 6px; font-size: 1rem; font-weight: 800; color: var(--oscuro); }
+    .method-step p { margin: 0 auto; max-width: 225px; font-size: 0.83rem; color: var(--suave); line-height: 1.48; }
+
+    /* =====================================================================
+       6. LOS 4 VIDEOS REALES
+       ===================================================================== */
+    .videos-band { background: var(--hero-bg); color: #FFFFFF; padding: 84px 0; }
+    .videos-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 36px; }
+    .videos-head h2 {
+      font-family: var(--font-display); font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+      line-height: 1; text-transform: uppercase; margin: 0; color: #FFFFFF;
+    }
+    .videos-head h2 span { color: var(--naranja); }
+    .videos-head p { margin: 0; max-width: 430px; font-size: 0.92rem; color: rgba(255, 255, 255, 0.74); }
+
+    .reels-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+    .reel-card {
+      background: #1C1C1C; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px;
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+    .reel-card:hover { transform: translateY(-4px); border-color: rgba(254, 81, 0, 0.65); }
+    .reel-media { position: relative; background: #0B0B0B; aspect-ratio: 9 / 16; overflow: hidden; }
+    .reel-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .reel-info { padding: 16px 16px 18px; display: flex; flex-direction: column; justify-content: space-between; flex: 1; gap: 12px; }
+    .reel-tag { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--naranja); margin-bottom: 4px; }
+    .reel-info h3 { font-family: var(--font-display); font-size: 1.32rem; line-height: 1.12; text-transform: uppercase; margin: 0 0 6px; color: #FFFFFF; }
+    .reel-info p { margin: 0; font-size: 0.79rem; color: rgba(255, 255, 255, 0.72); line-height: 1.45; }
+    .reel-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+    .reel-actions img { height: 22px; width: auto; object-fit: contain; }
+
+    .videos-footer-bar {
+      margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .videos-footer-bar p { margin: 0; font-size: 0.88rem; color: rgba(255, 255, 255, 0.78); }
+
+    /* MODAL CERTIFICADO REAL DE CANVA */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 150; background: rgba(14, 14, 14, 0.78);
+      backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 18px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .cert-sheet {
+      background: #FFFFFF; color: var(--oscuro); width: min(900px, 100%); max-height: 92vh;
+      overflow-y: auto; border-radius: 16px; padding: 20px; border-top: 6px solid var(--naranja);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0F0F0F; color: rgba(255, 255, 255, 0.74); padding: 34px 24px;
+      border-top: 3px solid var(--naranja);
+    }
+    .footer-inner {
+      width: min(1140px, 100%); margin: 0 auto; display: flex;
+      justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 0.8rem;
+    }
+    footer strong { color: #FFFFFF; }
+    footer .naranja { color: var(--naranja); font-weight: 700; }
+
+    /* BOTÓN FLOTANTE DE WHATSAPP */
+    .wa-float {
+      position: fixed; bottom: 20px; right: 20px; z-index: 80;
+      width: 56px; height: 56px; border-radius: 50%; background: var(--wa); color: #0B1F12;
+      display: grid; place-items: center; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .wa-float:hover { transform: scale(1.07); background: var(--wa-hover); }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1060px) {
+      .reels-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 960px) {
+      .hero-inner, .req-grid { grid-template-columns: 1fr; }
+      .hero-stage { padding: 102px 0 54px; min-height: auto; }
+      .hero-portrait-wrap { width: min(360px, 92%); }
+      .nine-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .method-line-svg { display: none; }
+      .method-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .wa-card { position: static; }
+    }
+    @media (max-width: 680px) {
+      .topbar-wrap { top: 10px; padding: 0 10px; }
+      .topbar { padding: 7px 10px; gap: 8px; }
+      .nav-links { display: none; }
+      .hero-stage { padding: 98px 0 44px; }
+      .hero-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .hero-card { min-height: 134px; padding: 16px 14px 14px; }
+      .hero-card strong { font-size: 1.18rem; }
+      .hero-card-3d { width: 66px; height: 66px; top: -22px; right: -6px; }
+      .hero-stat-sep { display: none; }
+      .nine-grid, .reels-grid, .method-grid, .urgency-grid, .fields-row { grid-template-columns: 1fr; }
+      .svc-pills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .req-card, .wa-card { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR PÚBLICA LIMPIA -->
+  <div class="topbar-wrap">
+    <header class="topbar" id="topbar">
+      <a href="#inicio" class="brand">
+        <div class="brand-logo-box">
+          <img class="logo-full" src="assets/logo-horizontal.png" alt="Urban Fumig">
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación">
+        <a href="#servicios" class="nav-link">9 Servicios</a>
+        <a href="#solicitar" class="nav-link">Solicitar</a>
+        <a href="#trabajo-real" class="nav-link">Trabajo real</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="./app/?login=1" class="login-pill" title="Acceso para clientes, aplicadores y gerencia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Iniciar sesión</span>
+        </a>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <!-- 1. PORTADA GENERAL (TODOS LOS SERVICIOS, SIN GENERALIZAR SOLO A RESIDENCIAL) -->
+    <section class="hero-stage" id="inicio">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <h1>
+            CONTROL DE PLAGAS <span class="hero-hl">PROFESIONAL</span><br>
+            Y RESPUESTA <span class="hero-hl">INMEDIATA.</span>
+          </h1>
+          <p class="hero-lead">
+            9 servicios especializados en <strong>San Cristóbal</strong> — <strong>Carros $30 · Camionetas $40 · Urbanismos $30/casa · Casas desde $80</strong>. Productos registrados, sin olor molesto y pago en cuotas con <strong>Cashea</strong>.
+          </p>
+
+          <div class="hero-cards">
+            <a href="#solicitar" class="hero-card primary-card">
+              <img class="hero-card-3d" src="assets/3d/alerta.png" alt="Solicitar servicio">
+              <strong>Solicitar<br>Servicio</strong>
+              <div class="hero-card-foot">
+                <span>Pedir por WhatsApp</span>
+                <span class="hero-card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 7l10 10M17 7v10H7"/></svg>
+                </span>
+              </div>
+            </a>
+
+            <a href="#servicios" class="hero-card secondary-card">
+              <img class="hero-card-3d" src="assets/3d/escudo.png" alt="Los 9 servicios">
+              <strong>Nuestros<br>9 Servicios</strong>
+              <div class="hero-card-foot">
+                <span>Ver catálogo</span>
+                <span class="hero-card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 7l10 10M17 7v10H7"/></svg>
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-icon"><img src="assets/3d/equipo.png" alt="9 Servicios"></div>
+              <div>
+                <div class="stat-num">9 SERVICIOS</div>
+                <div class="stat-lbl">Hogar, carros y empresas</div>
+              </div>
+            </div>
+            <div class="hero-stat-sep"></div>
+            <div class="hero-stat">
+              <div class="hero-stat-icon"><img src="assets/3d/certificado.png" alt="Certificado"></div>
+              <div>
+                <div class="stat-num">CERTIFICADO</div>
+                <div class="stat-lbl">Empresa avalada INSAI</div>
+              </div>
+            </div>
+            <div class="hero-stat-sep"></div>
+            <div class="hero-stat">
+              <div class="hero-stat-icon"><img src="assets/cashea-uf.png" alt="Cashea"></div>
+              <div>
+                <div class="stat-num">CASHEA</div>
+                <div class="stat-lbl">Paga en cuotas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-portrait-wrap">
+            <img class="hero-portrait" src="assets/hero-greysy.webp" alt="Urban Fumig F.P.">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. CINTAS DIAGONALES -->
+    <div class="marquee-stage" aria-hidden="true">
+      <div class="ribbon ribbon-a">
+        <div class="ribbon-track">
+          <span class="ribbon-item">RESPUESTA INMEDIATA <img src="assets/3d/alerta.png" alt=""></span>
+          <span class="ribbon-item">FUMIGACIÓN DE VEHÍCULOS <img src="assets/3d/equipo.png" alt=""></span>
+          <span class="ribbon-item">HOGARES Y URBANISMOS <img src="assets/3d/mapa.png" alt=""></span>
+          <span class="ribbon-item">RESTAURANTES Y EMPRESAS <img src="assets/3d/escudo.png" alt=""></span>
+          <span class="ribbon-item">RESPUESTA INMEDIATA <img src="assets/3d/alerta.png" alt=""></span>
+          <span class="ribbon-item">FUMIGACIÓN DE VEHÍCULOS <img src="assets/3d/equipo.png" alt=""></span>
+          <span class="ribbon-item">HOGARES Y URBANISMOS <img src="assets/3d/mapa.png" alt=""></span>
+          <span class="ribbon-item">RESTAURANTES Y EMPRESAS <img src="assets/3d/escudo.png" alt=""></span>
+        </div>
+      </div>
+      <div class="ribbon ribbon-b">
+        <div class="ribbon-track">
+          <span class="ribbon-item">PAGA EN CUOTAS CON <em>CASHEA</em> <img src="assets/3d/alerta.png" alt=""></span>
+          <span class="ribbon-item">9 SERVICIOS <em>PROFESIONALES</em> <img src="assets/3d/equipo.png" alt=""></span>
+          <span class="ribbon-item">CERTIFICADO <em>OFICIAL</em> <img src="assets/3d/certificado.png" alt=""></span>
+          <span class="ribbon-item">GARANTÍA <em>SANITARIA</em> <img src="assets/3d/escudo.png" alt=""></span>
+          <span class="ribbon-item">PAGA EN CUOTAS CON <em>CASHEA</em> <img src="assets/3d/alerta.png" alt=""></span>
+          <span class="ribbon-item">9 SERVICIOS <em>PROFESIONALES</em> <img src="assets/3d/equipo.png" alt=""></span>
+          <span class="ribbon-item">CERTIFICADO <em>OFICIAL</em> <img src="assets/3d/certificado.png" alt=""></span>
+          <span class="ribbon-item">GARANTÍA <em>SANITARIA</em> <img src="assets/3d/escudo.png" alt=""></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. LOS 9 SERVICIOS -->
+    <section class="services-showcase reveal" id="servicios">
+      <div class="container">
+        <div class="showcase-head">
+          <h2>NUESTROS <span>9 SERVICIOS</span></h2>
+          <p>Toca el servicio que necesitas para elegir tu nivel de urgencia y enviarnos el mensaje listo por WhatsApp.</p>
+        </div>
+
+        <div class="nine-grid" id="nine-services-grid"></div>
+      </div>
+    </section>
+
+    <!-- 4. SOLICITUD FUNCIONAL: SERVICIO + URGENCIA + WHATSAPP PREDETERMINADO -->
+    <section class="request-band reveal" id="solicitar">
+      <div class="container">
+        <div class="showcase-head" style="margin-bottom:28px;">
+          <h2>PIDE TU SERVICIO <span>POR WHATSAPP</span></h2>
+          <p>Selecciona el servicio y la urgencia: te armamos el mensaje automáticamente para atenderte más rápido.</p>
+        </div>
+
+        <div class="req-grid">
+          <div class="req-card">
+            <div class="req-block">
+              <div class="step-label"><span class="step-circle">1</span> Elige uno de los 9 servicios</div>
+              <div class="svc-pills" id="req-svc-pills"></div>
+            </div>
+
+            <div class="req-block">
+              <div class="step-label"><span class="step-circle">2</span> Nivel de urgencia</div>
+              <div class="urgency-grid" id="req-urgency-grid">
+                <button type="button" class="urg-btn active" data-urg="Urgencia inmediata (hoy mismo)">
+                  <strong>Urgencia inmediata</strong>
+                  <span>Necesito atención hoy mismo</span>
+                </button>
+                <button type="button" class="urg-btn" data-urg="Esta semana (agendar pronto)">
+                  <strong>Esta semana</strong>
+                  <span>Quiero agendar en los próximos días</span>
+                </button>
+                <button type="button" class="urg-btn" data-urg="Inspección / Presupuesto">
+                  <strong>Inspección / Presupuesto</strong>
+                  <span>Quiero diagnóstico y cotización</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="req-block">
+              <div class="step-label"><span class="step-circle">3</span> Tus datos (para agilizar la respuesta)</div>
+              <div class="fields-row">
+                <input id="wa-nombre" class="field" type="text" placeholder="Tu nombre, casa, local o urbanismo">
+                <input id="wa-sector" class="field" type="text" placeholder="Sector en San Cristóbal (ej: Pueblo Nuevo, Barrio Obrero)">
+              </div>
+              <input id="wa-nota" class="field" type="text" placeholder="Detalle opcional (ej: carro o camioneta, # de casas, cocina, horarios...)">
+              <label class="cashea-toggle" for="wa-cashea">
+                <input id="wa-cashea" type="checkbox">
+                <span>
+                  Quiero pagar en cuotas sin interés con Cashea
+                  <small>Te enviamos tu orden/enlace de Cashea al confirmar tu cita en San Cristóbal.</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- VISTA PREVIA DEL MENSAJE Y BOTÓN REAL DE WHATSAPP -->
+          <div class="wa-card">
+            <div class="wa-card-top">
+              <strong>Mensaje listo para WhatsApp</strong>
+              <span>(0424) 719-8219</span>
+            </div>
+
+            <div class="wa-preview-box" id="wa-preview"></div>
+
+            <div class="wa-trust-strip">
+              <strong>Seguridad garantizada:</strong> Productos originales registrados (Bayer / Maxforce), seguros para niños y mascotas. En vehículos <strong>no asperjamos líquido ni dejamos mal olor</strong>.
+              <div class="wa-permisos">INSAI RRE-20240707120708E · RACDA 01-13-22-01-02-2024-195 · Conformidad C-01/F/B-N°0011</div>
+            </div>
+
+            <a id="btn-wa-send" href="#" target="_blank" rel="noopener" class="btn btn-wa btn-block">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.32-1.66a11.85 11.85 0 0 0 5.74 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.42Zm-8.46 18.3a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.75.98 1-3.65-.24-.38a9.84 9.84 0 0 1-1.52-5.24c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.12 1.03 6.98 2.9a9.82 9.82 0 0 1 2.9 6.98c0 5.45-4.44 9.87-9.86 9.87Zm5.41-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.34Z"/></svg>
+              Enviar solicitud por WhatsApp
+            </a>
+
+            <div class="wa-meta-row">
+              <img src="assets/cashea-pildora.png" alt="Cashea x Urban Fumig" onerror="this.src='assets/cashea-uf.png'">
+              <button type="button" class="btn btn-outline-light btn-sm" onclick="abrirCertificado()">Ver ejemplo de certificado</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CÓMO FUNCIONA -->
+    <section class="method-section reveal" id="metodo">
+      <div class="container">
+        <div class="method-header">
+          <h2>ASÍ DE <span>RÁPIDO</span> FUNCIONA</h2>
+        </div>
+
+        <div class="method-wrap">
+          <svg class="method-line-svg" viewBox="0 0 960 40" fill="none" preserveAspectRatio="none">
+            <path d="M 30 20 Q 240 2, 480 20 T 930 20" stroke="#FE5100" stroke-opacity="0.38" stroke-width="3" stroke-dasharray="6 10" stroke-linecap="round"/>
+          </svg>
+
+          <div class="method-grid">
+            <div class="method-step">
+              <div class="method-icon-box">
+                <img src="assets/3d/alerta.png" alt="Eliges el servicio">
+                <span class="step-num-badge">01</span>
+              </div>
+              <h3>Eliges tu servicio</h3>
+              <p>Seleccionas qué necesitas y tu nivel de urgencia en segundos.</p>
+            </div>
+
+            <div class="method-step">
+              <div class="method-icon-box">
+                <img src="assets/3d/mapa.png" alt="Coordinamos por WhatsApp">
+                <span class="step-num-badge">02</span>
+              </div>
+              <h3>Sale el equipo</h3>
+              <p>Coordinamos al instante por WhatsApp y despachamos la unidad.</p>
+            </div>
+
+            <div class="method-step">
+              <div class="method-icon-box">
+                <img src="assets/3d/equipo.png" alt="Tratamiento en sitio">
+                <span class="step-num-badge">03</span>
+              </div>
+              <h3>Tratamiento profesional</h3>
+              <p>Aplicación segura, limpia y con productos registrados.</p>
+            </div>
+
+            <div class="method-step">
+              <div class="method-icon-box">
+                <img src="assets/3d/certificado.png" alt="Certificado oficial">
+                <span class="step-num-badge">04</span>
+              </div>
+              <h3>Recibes tu certificado</h3>
+              <p>Respaldo oficial y opción de pago en cuotas con Cashea.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. LOS 4 VIDEOS REALES EN CALLE -->
+    <section class="videos-band reveal" id="trabajo-real">
+      <div class="container">
+        <div class="videos-head">
+          <h2>MIRA NUESTRO <span>TRABAJO REAL</span></h2>
+          <p>Condominios, restaurantes, vehículos e instituciones atendidos por nuestro equipo en San Cristóbal.</p>
+        </div>
+
+        <div class="reels-grid">
+          <article class="reel-card">
+            <div class="reel-media">
+              <video controls playsinline preload="metadata" poster="assets/poster-condominios.jpg">
+                <source src="assets/video-condominios.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="reel-info">
+              <div>
+                <div class="reel-tag">Condominios</div>
+                <h3>Control en urbanismos y alcantarillado</h3>
+                <p>Cortamos el foco de cucarachas desde tanquillas y cloacas para proteger toda la comunidad.</p>
+              </div>
+              <div class="reel-actions">
+                <button type="button" class="btn btn-primary btn-sm" style="width:100%;" onclick="elegirYSubir('Control Residencial y Urbanismos')">Solicitar este servicio</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="reel-card">
+            <div class="reel-media">
+              <video controls playsinline preload="metadata" poster="assets/poster-fratello.jpg">
+                <source src="assets/video-fratello.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="reel-info">
+              <div>
+                <div class="reel-tag">Restaurantes</div>
+                <h3>Fratello Pizzería · Control profesional</h3>
+                <p>Protección sanitaria para cocinas y comercios con certificado oficial al día.</p>
+              </div>
+              <div class="reel-actions">
+                <button type="button" class="btn btn-outline-light btn-sm" style="width:100%;" onclick="abrirCertificado()">Ver certificado oficial</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="reel-card">
+            <div class="reel-media">
+              <video controls playsinline preload="metadata" poster="assets/poster-carros.jpg">
+                <source src="assets/video-carros.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="reel-info">
+              <div>
+                <div class="reel-tag">Vehículos · Cashea</div>
+                <h3>Fumigación de carros sin residuos</h3>
+                <p>Eliminamos chiripas y plagas en tablero, alfombras y maleta. Págalo en cuotas con Cashea.</p>
+              </div>
+              <div class="reel-actions">
+                <button type="button" class="btn btn-primary btn-sm" onclick="elegirYSubir('Fumigación de Vehículos y Desinfección')">Pedir para mi carro</button>
+                <img src="assets/cashea-uf.png" alt="Cashea">
+              </div>
+            </div>
+          </article>
+
+          <article class="reel-card">
+            <div class="reel-media">
+              <video controls playsinline preload="metadata" poster="assets/poster-mariels.jpg">
+                <source src="assets/video-mariels.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="reel-info">
+              <div>
+                <div class="reel-tag">Instituciones</div>
+                <h3>Atención segura para colegios y empresas</h3>
+                <p>Productos registrados y trabajo limpio para cuidar a niños, personal y clientes.</p>
+              </div>
+              <div class="reel-actions">
+                <button type="button" class="btn btn-outline-light btn-sm" style="width:100%;" onclick="elegirYSubir('Fumigación de Vehículos y Desinfección')">Solicitar visita</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="videos-footer-bar">
+          <p>¿Ya eres cliente con plan o parte del equipo Urban Fumig? Entra a tu panel privado:</p>
+          <a href="./app/?login=1" class="btn btn-primary btn-sm">Iniciar sesión en la plataforma &rarr;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL CERTIFICADO REAL DE CANVA -->
+  <div class="modal-backdrop" id="cert-modal" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title">
+    <div class="cert-sheet">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
+        <div>
+          <div style="font-size:0.72rem; font-weight:800; color:#FE5100; text-transform:uppercase;">Certificado oficial entregado a clientes</div>
+          <h3 id="cert-modal-title" style="margin:2px 0 0; font-size:1.06rem; color:var(--oscuro);">Ejemplo oficial · Urban Fumig F.P.</h3>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <a href="assets/certificado-real.jpg" download="Certificado-Urban-Fumig.jpg" class="btn btn-outline btn-sm">Descargar imagen</a>
+          <button type="button" class="btn btn-primary btn-sm" id="btn-close-cert">Cerrar</button>
+        </div>
+      </div>
+
+      <div style="border-radius:12px; overflow:hidden; border:1px solid var(--borde); background:#F6F4F0;">
+        <img src="assets/certificado-real.jpg" alt="Certificado oficial de fumigación Urban Fumig F.P." style="width:100%; height:auto; display:block;">
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <a href="#solicitar" class="wa-float" aria-label="Solicitar servicio por WhatsApp" title="Solicitar por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.32-1.66a11.85 11.85 0 0 0 5.74 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.42Zm-8.46 18.3a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.75.98 1-3.65-.24-.38a9.84 9.84 0 0 1-1.52-5.24c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.12 1.03 6.98 2.9a9.82 9.82 0 0 1 2.9 6.98c0 5.45-4.44 9.87-9.86 9.87Zm5.41-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.34Z"/></svg>
+  </a>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>URBAN FUMIG F.P.</strong> · Edif. Servicentro Los Llanos #7-260, San Cristóbal, Táchira</div>
+      <div>
+        Tel: <a href="https://wa.me/584247198219" target="_blank" rel="noopener" class="naranja">(0424) 719-8219</a> ·
+        <a href="https://instagram.com/urbanfumig" target="_blank" rel="noopener" class="naranja">@urbanfumig</a> ·
+        <a href="./app/?login=1" style="text-decoration:underline; margin-left:6px;">Iniciar sesión</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+
+  <script>
+    'use strict';
+
+    const WA_PHONE = '584247198219';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxIN-hudPk_xt8d1xNIvRSZyaA_G45EiPJvL3pQ1IzR7Fwz-DJlHyKX27CJx5Wu8U_r/exec';
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+
+    const SERVICIOS = [
+      { num: '01', slug: 'urbanismos', nombre: 'Control Residencial y Urbanismos', tag: 'Casas y condominios', precio: 'Urbanismos ~$30/casa · Casas $80–$120', desc: 'Control integral en viviendas, cloacas, tanquillas y áreas comunes con planes para conjuntos de 20 a 60 casas.' },
+      { num: '02', slug: 'cucarachas', nombre: 'Control de Cucarachas', tag: 'Hogar y comercios', precio: 'Casas $80–$120 · Comercios desde $120', desc: 'Tratamiento profundo con vapor, gel profesional Maxforce, polvo y residual Bayer sin olor molesto.' },
+      { num: '03', slug: 'roedores', nombre: 'Control de Roedores', tag: 'Seguridad sanitaria', precio: 'Según inspección · Certificado oficial', desc: 'Estaciones seguras, sellado estratégico y seguimiento para casas, depósitos y comercios.' },
+      { num: '04', slug: 'termitas', nombre: 'Termitas y Comején', tag: 'Estructuras y madera', precio: 'Desde $250 · Diagnóstico técnico', desc: 'Inyección directa con jeringa (Fipronil) y barrera protectora para muebles, closets y techos.' },
+      { num: '05', slug: 'mosquitos', nombre: 'Mosquitos y Zancudos', tag: 'Exteriores', precio: 'Cotización por área · Cashea', desc: 'Termonebulización en patios, calles y eliminación de focos en zonas residenciales.' },
+      { num: '06', slug: 'colchones', nombre: 'Limpieza de Colchones y Chinches', tag: 'Tratamiento térmico', precio: '$50 · Protocolo seguro', desc: 'Limpieza profunda y protocolo térmico profesional para colchones, habitaciones y hotelería.' },
+      { num: '07', slug: 'carros', nombre: 'Fumigación de Vehículos y Desinfección', tag: 'Cashea sin interés', precio: 'Carro $30 · Camioneta $40', desc: 'Inspección con lupa, gel con jeringa e insuflado sin aspersión líquida, sin olor ni residuos grasosos.' },
+      { num: '08', slug: 'tanques', nombre: 'Lavado de Tanques de Agua', tag: 'Cloro y pH', precio: '$80 · Medición cloro y pH', desc: 'Limpieza profunda, desinfección y medición real de cloro y pH con equipo exclusivo para agua potable.' },
+      { num: '09', slug: 'maleza', nombre: 'Áreas Verdes y Maleza', tag: 'Mantenimiento', precio: 'Cotización según área', desc: 'Desmalezado y herbicida selectivo para mantener patios y urbanismos impecables.' }
+    ];
+
+    const state = {
+      servicio: SERVICIOS[0].nombre,
+      urgencia: 'Urgencia inmediata (hoy mismo)'
+    };
+
+    function buildWhatsAppMessage() {
+      const nombre = document.getElementById('wa-nombre').value.trim();
+      const sector = document.getElementById('wa-sector').value.trim();
+      const nota = document.getElementById('wa-nota').value.trim();
+      const usaCashea = document.getElementById('wa-cashea') && document.getElementById('wa-cashea').checked;
+
+      const lines = [
+        `Hola Urban Fumig, quiero solicitar el servicio de *${state.servicio}*.`,
+        `• Nivel de urgencia: *${state.urgencia}*`
+      ];
+      if (usaCashea) lines.push('• Forma de pago: *Quiero pagar en cuotas con Cashea*');
+      if (nombre) lines.push(`• Cliente / lugar: ${nombre}`);
+      if (sector) lines.push(`• Sector en San Cristóbal: ${sector}`);
+      if (nota) lines.push(`• Detalle: ${nota}`);
+      lines.push('', 'Quedo atento para coordinar. ¡Gracias!');
+      return lines.join('\n');
+    }
+
+    function updateWhatsApp() {
+      const msg = buildWhatsAppMessage();
+      document.getElementById('wa-preview').textContent = msg.replace(/\*/g, '');
+      const url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
+      document.getElementById('btn-wa-send').href = url;
+    }
+
+    function renderServices() {
+      const nine = document.getElementById('nine-services-grid');
+      nine.innerHTML = SERVICIOS.map((s) => `
+        <button type="button" class="nine-card ${state.servicio === s.nombre ? 'selected' : ''}" data-pick="${s.nombre}">
+          <div>
+            <div class="nine-top">
+              <span class="nine-num">${s.num}</span>
+              <span class="nine-tag">${s.tag}</span>
+            </div>
+            <h3>${s.nombre}</h3>
+            <p>${s.desc}</p>
+            <div class="nine-price">${s.precio}</div>
+          </div>
+          <span class="nine-go">${state.servicio === s.nombre ? 'Seleccionado — Ir a WhatsApp' : 'Seleccionar servicio'} &rarr;</span>
+        </button>
+      `).join('');
+
+      nine.querySelectorAll('[data-pick]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.servicio = btn.dataset.pick;
+          renderServices();
+          updateWhatsApp();
+          document.getElementById('solicitar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      const pills = document.getElementById('req-svc-pills');
+      pills.innerHTML = SERVICIOS.map((s) => `
+        <button type="button" class="svc-pill ${state.servicio === s.nombre ? 'active' : ''}" data-pill="${s.nombre}">
+          ${s.nombre}
+        </button>
+      `).join('');
+
+      pills.querySelectorAll('[data-pill]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.servicio = btn.dataset.pill;
+          renderServices();
+          updateWhatsApp();
+        });
+      });
+    }
+
+    function elegirYSubir(nombreServicio) {
+      state.servicio = nombreServicio;
+      renderServices();
+      updateWhatsApp();
+      document.getElementById('solicitar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    window.elegirYSubir = elegirYSubir;
+
+    function abrirCertificado() {
+      document.getElementById('cert-modal').classList.add('open');
+    }
+    window.abrirCertificado = abrirCertificado;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.Lenis) {
+        const lenis = new Lenis({ duration: 1.05, smoothWheel: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+      }
+
+      const topbar = document.getElementById('topbar');
+      const syncNav = () => topbar.classList.toggle('scrolled', window.scrollY > 520);
+      window.addEventListener('scroll', syncNav, { passive: true });
+      syncNav();
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // Pausar otros videos cuando uno se reproduce
+      const allVids = [...document.querySelectorAll('video')];
+      allVids.forEach((v) => {
+        v.addEventListener('play', () => {
+          allVids.forEach((other) => { if (other !== v && !other.paused) other.pause(); });
+        });
+      });
+
+      // Selector de urgencia
+      document.querySelectorAll('#req-urgency-grid .urg-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#req-urgency-grid .urg-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.urgencia = btn.dataset.urg;
+          updateWhatsApp();
+        });
+      });
+
+      // Actualizar mensaje en vivo al escribir o marcar Cashea
+      ['wa-nombre', 'wa-sector', 'wa-nota'].forEach((id) => {
+        document.getElementById(id).addEventListener('input', updateWhatsApp);
+      });
+      const casheaBox = document.getElementById('wa-cashea');
+      if (casheaBox) casheaBox.addEventListener('change', updateWhatsApp);
+
+      // Aterrizaje directo por campaña (?s=carros, ?s=urbanismos, ?s=termitas, ?s=tanques, ?s=colchones, ?s=hogar)
+      const params = new URLSearchParams(window.location.search);
+      const slugParam = (params.get('s') || '').toLowerCase().trim();
+      if (slugParam) {
+        const alias = { hogar: 'urbanismos', casas: 'urbanismos', camioneta: 'carros', camionetas: 'carros', vehiculos: 'carros' };
+        const targetSlug = alias[slugParam] || slugParam;
+        const found = SERVICIOS.find((s) => s.slug === targetSlug);
+        if (found) {
+          state.servicio = found.nombre;
+          if (targetSlug === 'carros' && casheaBox) casheaBox.checked = true;
+          setTimeout(() => {
+            const sec = document.getElementById('solicitar');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 250);
+        }
+      }
+
+      // Al tocar "Enviar solicitud por WhatsApp", además de abrir WhatsApp al instante,
+      // registra silenciosamente la solicitud en Google Sheets para que salga en /app
+      document.getElementById('btn-wa-send').addEventListener('click', () => {
+        const nombre = document.getElementById('wa-nombre').value.trim() || 'Cliente Web (WhatsApp)';
+        const sector = document.getElementById('wa-sector').value.trim() || 'San Cristóbal, Táchira';
+        const nota = document.getElementById('wa-nota').value.trim() || 'Contacto iniciado por WhatsApp desde urbanfumig.com';
+        try {
+          fetch(API_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            keepalive: true,
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              accion: 'api',
+              fn: 'crearSolicitudPublica',
+              args: [{
+                servicio: state.servicio,
+                urgencia: state.urgencia,
+                empresa: nombre,
+                direccion: sector,
+                nota: nota
+              }]
+            })
+          }).catch(() => {});
+        } catch (_) {}
+      });
+
+      document.getElementById('btn-close-cert').addEventListener('click', () => {
+        document.getElementById('cert-modal').classList.remove('open');
+      });
+      document.getElementById('cert-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'cert-modal') e.currentTarget.classList.remove('open');
+      });
+
+      renderServices();
+      updateWhatsApp();
+    });
+  </script>
+</body>
+</html>
