@@ -1,4 +1,4 @@
-const CACHE = 'uf-pitch-v14';
+const CACHE = 'uf-pitch-v15';
 const ASSETS = [
   './',
   './index.html',
@@ -37,6 +37,7 @@ self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
   if (e.request.url.endsWith('.mp4')) return;
   if (e.request.url.includes('/encuesta')) return;
+  if (e.request.url.includes('/app')) return;
   e.respondWith(
     caches.match(e.request).then((cached) => cached || fetch(e.request).catch(() => caches.match('./index.html')))
   );
