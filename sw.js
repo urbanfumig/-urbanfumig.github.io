@@ -1,4 +1,4 @@
-const CACHE = 'uf-pitch-v13';
+const CACHE = 'uf-pitch-v14';
 const ASSETS = [
   './',
   './index.html',

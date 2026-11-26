@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Urban Fumig · Control Profesional de Plagas en San Cristóbal</title>
-  <meta name="description" content="Urban Fumig F.P. en San Cristóbal, Táchira: Carros $30, Camionetas $40, Urbanismos $30/casa, Colchones $50, Tanques $80, Casas desde $80. Paga en cuotas con Cashea. Empresa avalada INSAI y RACDA.">
+  <meta name="description" content="Urban Fumig F.P. en San Cristóbal, Táchira: control de plagas profesional para hogares, vehículos, urbanismos, colchones, tanques y comercios. Paga en cuotas con Cashea. Empresa avalada INSAI y RACDA.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://urbanfumig.com/">
   <meta property="og:title" content="Urban Fumig · Control de Plagas en San Cristóbal (Cashea disponible)">
-  <meta property="og:description" content="Carros $30 · Camionetas $40 · Urbanismos $30/casa · Colchones $50 · Tanques $80 · Casas desde $80. Sin olor, seguro para niños y mascotas. Avalados INSAI y RACDA.">
+  <meta property="og:description" content="9 servicios especializados en San Cristóbal para hogares, vehículos, urbanismos y empresas. Sin olor molesto, seguro para niños y mascotas. Avalados INSAI y RACDA.">
   <meta property="og:image" content="https://urbanfumig.com/assets/certificado-real.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#141414">
@@ -401,17 +401,16 @@
       align-items: center;
       gap: 6px;
       margin-top: 10px;
-      padding: 5px 10px;
-      border-radius: 8px;
-      background: #1C1C1C;
-      color: #FFFFFF;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--fondo);
+      border: 1px solid var(--borde);
+      color: var(--oscuro);
       font-size: 0.78rem;
       font-weight: 800;
       letter-spacing: 0.01em;
     }
-    .nine-price em { font-style: normal; color: #FF8C52; font-weight: 700; }
-    .nine-card.selected .nine-price { background: var(--naranja); }
-    .nine-card.selected .nine-price em { color: #FFF3EC; }
+    .nine-card.selected .nine-price { background: #FFF2EB; border-color: rgba(254, 81, 0, 0.35); color: var(--naranja); }
     .nine-go { font-size: 0.76rem; font-weight: 800; color: var(--naranja); }
 
     .cashea-toggle {
@@ -794,7 +793,7 @@
             Y RESPUESTA <span class="hero-hl">INMEDIATA.</span>
           </h1>
           <p class="hero-lead">
-            9 servicios especializados en <strong>San Cristóbal</strong> — <strong>Carros $30 · Camionetas $40 · Urbanismos $30/casa · Casas desde $80</strong>. Productos registrados, sin olor molesto y pago en cuotas con <strong>Cashea</strong>.
+            9 servicios especializados en <strong>San Cristóbal</strong> para hogares, vehículos, urbanismos y empresas. Productos registrados, sin olor molesto y pago en cuotas con <strong>Cashea</strong>.
           </p>
 
           <div class="hero-cards">
@@ -1167,15 +1166,15 @@
     }
 
     const SERVICIOS = [
-      { num: '01', slug: 'urbanismos', nombre: 'Control Residencial y Urbanismos', tag: 'Casas y condominios', precio: 'Urbanismos ~$30/casa · Casas $80–$120', desc: 'Control integral en viviendas, cloacas, tanquillas y áreas comunes con planes para conjuntos de 20 a 60 casas.' },
-      { num: '02', slug: 'cucarachas', nombre: 'Control de Cucarachas', tag: 'Hogar y comercios', precio: 'Casas $80–$120 · Comercios desde $120', desc: 'Tratamiento profundo con vapor, gel profesional Maxforce, polvo y residual Bayer sin olor molesto.' },
-      { num: '03', slug: 'roedores', nombre: 'Control de Roedores', tag: 'Seguridad sanitaria', precio: 'Según inspección · Certificado oficial', desc: 'Estaciones seguras, sellado estratégico y seguimiento para casas, depósitos y comercios.' },
-      { num: '04', slug: 'termitas', nombre: 'Termitas y Comején', tag: 'Estructuras y madera', precio: 'Desde $250 · Diagnóstico técnico', desc: 'Inyección directa con jeringa (Fipronil) y barrera protectora para muebles, closets y techos.' },
-      { num: '05', slug: 'mosquitos', nombre: 'Mosquitos y Zancudos', tag: 'Exteriores', precio: 'Cotización por área · Cashea', desc: 'Termonebulización en patios, calles y eliminación de focos en zonas residenciales.' },
-      { num: '06', slug: 'colchones', nombre: 'Limpieza de Colchones y Chinches', tag: 'Tratamiento térmico', precio: '$50 · Protocolo seguro', desc: 'Limpieza profunda y protocolo térmico profesional para colchones, habitaciones y hotelería.' },
-      { num: '07', slug: 'carros', nombre: 'Fumigación de Vehículos y Desinfección', tag: 'Cashea sin interés', precio: 'Carro $30 · Camioneta $40', desc: 'Inspección con lupa, gel con jeringa e insuflado sin aspersión líquida, sin olor ni residuos grasosos.' },
-      { num: '08', slug: 'tanques', nombre: 'Lavado de Tanques de Agua', tag: 'Cloro y pH', precio: '$80 · Medición cloro y pH', desc: 'Limpieza profunda, desinfección y medición real de cloro y pH con equipo exclusivo para agua potable.' },
-      { num: '09', slug: 'maleza', nombre: 'Áreas Verdes y Maleza', tag: 'Mantenimiento', precio: 'Cotización según área', desc: 'Desmalezado y herbicida selectivo para mantener patios y urbanismos impecables.' }
+      { num: '01', slug: 'urbanismos', nombre: 'Control Residencial y Urbanismos', tag: 'Casas y condominios', precio: 'A partir de $80 · Urbanismos desde $30/casa', desc: 'Control integral en viviendas, cloacas, tanquillas y áreas comunes con planes para conjuntos de 20 a 60 casas.' },
+      { num: '02', slug: 'cucarachas', nombre: 'Control de Cucarachas', tag: 'Hogar y comercios', precio: 'A partir de $80', desc: 'Tratamiento profundo con vapor, gel profesional Maxforce, polvo y residual Bayer sin olor molesto.' },
+      { num: '03', slug: 'roedores', nombre: 'Control de Roedores', tag: 'Seguridad sanitaria', precio: 'Según inspección', desc: 'Estaciones seguras, sellado estratégico y seguimiento para casas, depósitos y comercios.' },
+      { num: '04', slug: 'termitas', nombre: 'Termitas y Comején', tag: 'Estructuras y madera', precio: 'A partir de $250', desc: 'Inyección directa con jeringa (Fipronil) y barrera protectora para muebles, closets y techos.' },
+      { num: '05', slug: 'mosquitos', nombre: 'Mosquitos y Zancudos', tag: 'Exteriores', precio: 'Según área', desc: 'Termonebulización en patios, calles y eliminación de focos en zonas residenciales.' },
+      { num: '06', slug: 'colchones', nombre: 'Limpieza de Colchones y Chinches', tag: 'Tratamiento térmico', precio: 'A partir de $50', desc: 'Limpieza profunda y protocolo térmico profesional para colchones, habitaciones y hotelería.' },
+      { num: '07', slug: 'carros', nombre: 'Fumigación de Vehículos y Desinfección', tag: 'Cashea sin interés', precio: 'A partir de $30', desc: 'Inspección con lupa, gel con jeringa e insuflado sin aspersión líquida, sin olor ni residuos grasosos.' },
+      { num: '08', slug: 'tanques', nombre: 'Lavado de Tanques de Agua', tag: 'Cloro y pH', precio: 'A partir de $80', desc: 'Limpieza profunda, desinfección y medición real de cloro y pH con equipo exclusivo para agua potable.' },
+      { num: '09', slug: 'maleza', nombre: 'Áreas Verdes y Maleza', tag: 'Mantenimiento', precio: 'Según área', desc: 'Desmalezado y herbicida selectivo para mantener patios y urbanismos impecables.' }
     ];
 
     const state = {
